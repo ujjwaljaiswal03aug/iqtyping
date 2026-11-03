@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f7fa">
+<meta name="description" content="IQTyping is an online typing practice and speed test platform with timed tests, live WPM, accuracy feedback, word drills, GK and GS/NCERT passages, and session analytics.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="IQTyping">
+<meta name="application-name" content="IQTyping">
+<meta name="color-scheme" content="light dark">
+<title>IQTyping – Online Typing Test, Speed Practice &amp; Accuracy Training</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="IQTyping">
+<meta property="og:title" content="IQTyping – Online Typing Test &amp; Practice">
+<meta property="og:description" content="Improve typing speed and accuracy with timed tests, word practice, GK and GS/NCERT passages, and performance analytics.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IQTyping – Online Typing Test &amp; Practice">
+<meta name="twitter:description" content="Practice typing, track WPM and accuracy, and build consistency with IQTyping.">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "IQTyping",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires a modern web browser with JavaScript enabled",
+  "description": "An online typing practice and speed test platform with timed tests, live WPM, accuracy feedback, word drills, general knowledge passages, and session analytics."
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#111318;--panel:#191c23;--panel2:#20242d;--text:#e8eaf0;--muted:#777f91;--accent:#e7b95b;--good:#9bcf9a;--bad:#e47d83;--line:#2b303b;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,select{font:inherit}button{cursor:pointer}
+.shell{width:min(1060px,calc(100% - 40px));margin:auto}
+header{height:86px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.045)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:-.04em;font-size:21px}.mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:#171717;display:grid;place-items:center;font-family:var(--mono);font-weight:900;font-size:17px}
+.brand span small{display:block;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.025em;text-transform:none;margin-top:3px;line-height:1.35}
+.header-right{display:flex;align-items:center;gap:10px}.pill{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 12px;border-radius:9px;font-size:12px}.pill:hover,.pill.active{color:var(--accent);border-color:#695a37}
+main{padding:48px 0 54px}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:750;margin-bottom:13px}
+h1{font-size:clamp(32px,5vw,48px);letter-spacing:-.055em;line-height:1.08;margin:0 0 13px;font-weight:720}.sub{color:var(--muted);margin:0;font-size:14px;line-height:1.7}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px}.intro .sub{max-width:450px}
+.modebar{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:18px}.mode-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-right:5px}
+.modebar button{background:var(--panel);border:1px solid transparent;color:var(--muted);border-radius:8px;padding:9px 13px;font-size:12px}.modebar button.active{color:var(--accent);border-color:#655632;background:#211f1a}.divider{height:20px;width:1px;background:var(--line);margin:0 6px}
+.test-card{background:var(--panel);border:1px solid #252a34;border-radius:17px;padding:25px 27px 22px;box-shadow:0 18px 70px #00000012}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:23px}.stat{padding:13px 15px;border-radius:10px;background:var(--panel2)}.stat .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}.stat .value{font-family:var(--mono);font-size:25px;letter-spacing:-.06em}.stat .unit{font-family:inherit;font-size:11px;color:var(--muted);letter-spacing:0;margin-left:4px}
+.typing-area{position:relative;border:1px solid var(--line);background:#14171d;border-radius:12px;min-height:188px;padding:24px 24px 20px;overflow:hidden;cursor:text}.typing-area:focus-within{border-color:#615638}.words{font:clamp(26px,2.35vw,30px)/1.7 var(--mono);letter-spacing:0;word-break:normal;overflow-wrap:anywhere;user-select:none;max-height:190px;overflow:hidden}.char{color:#596171;position:relative}.char.correct{color:var(--text)}.char.incorrect{color:var(--bad);background:#4c272c;border-radius:2px}.char.current:before{content:"";position:absolute;left:-1px;top:3px;bottom:3px;width:2px;background:var(--accent);border-radius:2px;animation:blink 1s steps(2,start) infinite}.char.current.space:before{left:0}@keyframes blink{to{opacity:0}}
+#typingInput{position:absolute;inset:0;width:100%;height:100%;opacity:.01;resize:none;border:0;outline:0;color:transparent;background:transparent;caret-color:transparent;cursor:text}
+.test-hint{display:flex;justify-content:space-between;gap:12px;margin-top:15px;color:var(--muted);font-size:11px}.keycap{font-family:var(--mono);border:1px solid #363c48;background:#20242d;border-radius:5px;padding:3px 6px;color:#a5acba;font-size:10px}
+.actions{display:flex;align-items:center;justify-content:center;gap:10px;margin:19px 0 0}.primary{border:0;border-radius:9px;background:var(--accent);color:#191710;padding:12px 18px;font-size:12px;font-weight:800}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:11px 15px;font-size:12px}.secondary:hover{color:var(--text);border-color:#505767}
+.result{display:none;margin-top:16px;padding:22px;border:1px solid #5b5034;background:#211f1a;border-radius:13px}.result.show{display:block}.result-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.result h2{font-size:23px;letter-spacing:-.04em;margin:0 0 5px}.result p{color:var(--muted);font-size:12px;margin:0}
+.result-quote{margin:16px 0 0;padding:13px 16px;border-left:3px solid var(--accent);border-radius:0 9px 9px 0;background:var(--panel2)}
+.result-quote p{color:var(--text);font-size:13px;line-height:1.65;margin:0}
+.result-quote cite{display:block;margin-top:8px;color:var(--muted);font-size:11px;font-style:normal;font-weight:650}.result-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}.result-grid .value{font:25px var(--mono);color:var(--accent)}.result-grid .label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-top:6px}
+.bottom{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}.mini-card{border:1px solid #252a34;background:#15181e;border-radius:13px;padding:19px 20px}.mini-title{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:14px}.history-list{display:flex;gap:8px;align-items:end;height:64px}.bar-wrap{flex:1;text-align:center;min-width:0}.bar{width:100%;min-height:3px;background:#4d493d;border-radius:4px 4px 1px 1px}.bar-wrap:last-child .bar{background:var(--accent)}.bar-label{font:10px var(--mono);color:var(--muted);margin-top:7px}.empty{font-size:12px;color:var(--muted);line-height:1.7}.goal-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;margin:12px 0;color:var(--muted)}.goal-row strong{color:var(--text);font:13px var(--mono)}.track{height:5px;background:#292e38;border-radius:9px;overflow:hidden}.track span{display:block;height:100%;width:0;background:var(--accent);border-radius:9px;transition:width .3s}
+footer{border-top:1px solid rgba(255,255,255,.05);padding:20px 0 28px;color:#626a79;font-size:11px;display:flex;justify-content:space-between;gap:20px}
+@media(max-width:650px){.shell{width:min(100% - 24px,1060px)}header{height:70px}.brand{font-size:18px}main{padding-top:32px}.intro{display:block}.intro .sub{margin-top:10px}.test-card{padding:15px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}.stat{padding:11px}.stat .value{font-size:22px}.typing-area{padding:17px;min-height:190px}.words{font-size:clamp(21px,5vw,25px);line-height:1.75;max-height:190px}.test-hint{font-size:10px}.bottom{grid-template-columns:1fr}.result-grid{grid-template-columns:repeat(2,1fr);row-gap:18px}.header-right .pill:first-child{display:none}}
+
+/* Session analytics additions; existing layout and controls remain unchanged. */
+.analytics-chart{margin-top:20px;padding:16px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
+.analytics-chart-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.chart-legend{display:flex;gap:14px;flex-wrap:wrap;text-transform:none;letter-spacing:0}.legend-key{display:inline-flex;align-items:center;gap:6px}.legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block}.legend-net{background:var(--accent)}.legend-raw{background:#5b9ce7}
+#performanceChart{display:block;width:100%;height:180px;overflow:visible}.analytics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.analytics-stat{padding:12px;border-radius:9px;background:#14171d}.analytics-stat strong{display:block;font:20px var(--mono);color:var(--accent)}.analytics-stat span{display:block;margin-top:5px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}.chart-grid-line{stroke:rgba(255,255,255,.08);stroke-dasharray:4 4}.chart-axis{fill:var(--muted);font:10px var(--mono)}.chart-net{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}.chart-raw{fill:none;stroke:#5b9ce7;stroke-width:2;stroke-dasharray:5 3;stroke-linejoin:round;stroke-linecap:round}
+@media(max-width:650px){.analytics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.analytics-chart{padding:12px}}
+
+
+/* TypeLab-inspired visual integration: additive styling only */
+:root{--tl-cool-bg:#171a21;--tl-cool-panel:#252b36;--tl-cool-panel2:#202630;--tl-cool-text:#e5e7eb;--tl-cool-muted:#94a3b8;--tl-cool-accent:#38bdf8;--tl-cool-good:#e5e7eb;--tl-cool-bad:#f87171;--tl-cool-line:#394454}
+body.cool{background:var(--tl-cool-bg);color:var(--tl-cool-text)}
+body.cool .test-card{background:var(--tl-cool-panel);border-color:var(--tl-cool-line)}
+body.cool .stat{background:var(--tl-cool-panel2)}
+body.cool .typing-area{background:#171d27;border-color:var(--tl-cool-line)}
+body.cool .mini-card{background:#202630;border-color:var(--tl-cool-line)}
+body.cool .analytics-chart{background:var(--tl-cool-panel2);border-color:var(--tl-cool-line)}
+body.cool .analytics-stat{background:#171d27}
+body.cool .char.correct{color:var(--tl-cool-text)}
+body.cool .char.incorrect{color:var(--tl-cool-bad);background:#43252b}
+body.cool .char.current:before{background:var(--tl-cool-accent)}
+body.cool .modebar button.active{color:var(--tl-cool-accent);border-color:#38627a;background:#1b2a35}
+body.cool .primary{background:var(--tl-cool-accent);color:#14212a}
+body.cool .result{border-color:#38627a;background:#1c2831}
+body.cool .result-grid .value,body.cool .analytics-stat strong{color:var(--tl-cool-accent)}
+body.cool .legend-net{background:var(--tl-cool-accent)}
+body.cool .chart-net{stroke:var(--tl-cool-accent)}
+body.cool .eyebrow{color:var(--tl-cool-accent)}
+body.cool .pill:hover,body.cool .pill.active{color:var(--tl-cool-accent);border-color:#38627a}
+body.cool .bar-wrap:last-child .bar{background:var(--tl-cool-accent)}
+body.cool .track span{background:var(--tl-cool-accent)}
+
+
+/* Accessible navigation and helpful, crawlable site information pages. */
+.site-nav{display:flex;align-items:center;gap:15px;margin-left:auto;margin-right:18px}
+.site-nav a,.footer-links a{color:var(--muted);text-decoration:none;font-size:12px}
+.site-nav a:hover,.footer-links a:hover{color:var(--accent)}
+.site-content{padding:8px 0 48px}
+.content-card{margin:16px 0;padding:24px;border:1px solid #252a34;background:#15181e;border-radius:13px;scroll-margin-top:20px}
+.content-card h2{margin:0 0 12px;font-size:22px;letter-spacing:-.03em}
+.content-card h3{margin:20px 0 8px;font-size:15px}
+.content-card p,.content-card li{color:var(--muted);font-size:13px;line-height:1.8}
+.content-card ul{padding-left:20px}
+.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.footer-links{display:flex;flex-wrap:wrap;gap:14px}
+@media(max-width:650px){header{height:auto;min-height:70px;flex-wrap:wrap;padding:12px 0;row-gap:12px}.site-nav{order:3;width:100%;margin:0;gap:16px;flex-wrap:wrap}.header-right{margin-left:auto}.content-card{padding:17px}.content-grid{grid-template-columns:1fr}footer{flex-direction:column}}
+
+
+/* White-first theme and additions for session history and modal results. */
+:root{--bg:#f5f7fa;--panel:#fff;--panel2:#f5f7fa;--text:#263238;--muted:#687786;--accent:#2196f3;--good:#2e7d32;--bad:#d84343;--line:#dce3eb}
+body{background:var(--bg);color:var(--text)}header,footer{border-color:var(--line)}.mark{color:#fff}
+.pill,.modebar button,.secondary{background:#fff;border-color:var(--line);color:var(--muted)}
+.pill:hover,.pill.active{color:var(--accent);border-color:var(--accent)}
+.modebar button.active{color:#0878d1;border-color:#8bc8fa;background:#eaf5ff}
+.test-card{background:#fff;border-color:var(--line);box-shadow:0 12px 36px rgba(29,55,83,.07)}.stat{background:#f5f7fa}
+.typing-area{background:#fbfcfe;border-color:#dce3eb}.typing-area:focus-within{border-color:#2196f3}
+.char{color:#9aa6b4}.char.correct{color:#263238}.char.incorrect{color:#c62828;background:#ffebee}.char.current:before{background:#2196f3}
+.keycap{border-color:#dce3eb;background:#f5f7fa;color:#526170}.primary{background:#2196f3;color:#fff}.secondary:hover{color:#17212b;border-color:#2196f3}
+.result{border-color:#b7dcfb;background:#f2f8ff}.result-grid .value,.analytics-stat strong,.eyebrow{color:#0878d1}
+.mini-card,.content-card{border-color:#dce3eb;background:#fff}.analytics-chart{border-color:#dce3eb;background:#f5f7fa}.analytics-stat{background:#fff}
+.chart-grid-line{stroke:rgba(38,50,56,.12)}.chart-raw{stroke:#7a8795}.legend-raw{background:#7a8795}
+.bar{background:#c5d8e8}.bar-wrap:last-child .bar,.track span{background:#2196f3}.track{background:#e5ebf1}
+.site-nav a,.footer-links a{color:#687786}
+body.dark-theme{--bg:#111318;--panel:#191c23;--panel2:#20242d;--text:#e8eaf0;--muted:#929aaa;--accent:#e7b95b;--good:#9bcf9a;--bad:#e47d83;--line:#2b303b;background:var(--bg);color:var(--text)}
+body.dark-theme header,body.dark-theme footer{border-color:rgba(255,255,255,.06)}
+body.dark-theme .pill,body.dark-theme .modebar button,body.dark-theme .secondary{background:transparent;border-color:var(--line);color:var(--muted)}
+body.dark-theme .modebar button.active{color:var(--accent);border-color:#655632;background:#211f1a}
+body.dark-theme .test-card{background:var(--panel);border-color:#252a34}body.dark-theme .stat{background:var(--panel2)}
+body.dark-theme .typing-area{background:#14171d;border-color:var(--line)}
+body.dark-theme .char{color:#596171}body.dark-theme .char.correct{color:var(--text)}body.dark-theme .char.incorrect{color:var(--bad);background:#4c272c}body.dark-theme .char.current:before{background:var(--accent)}
+body.dark-theme .primary{background:var(--accent);color:#191710}body.dark-theme .result{border-color:#5b5034;background:#211f1a}
+body.dark-theme .result-grid .value,body.dark-theme .analytics-stat strong,body.dark-theme .eyebrow{color:var(--accent)}
+body.dark-theme .mini-card,body.dark-theme .content-card{background:#15181e;border-color:#252a34}
+body.dark-theme .analytics-chart{background:var(--panel2);border-color:var(--line)}body.dark-theme .analytics-stat{background:#14171d}
+body.dark-theme .bar-wrap:last-child .bar,body.dark-theme .track span{background:var(--accent)}body.dark-theme .track{background:#292e38}
+body.dark-theme .chart-grid-line{stroke:rgba(255,255,255,.08)}body.dark-theme .chart-raw{stroke:#5b9ce7}body.dark-theme .legend-raw{background:#5b9ce7}
+body.dark-theme .site-nav a,body.dark-theme .footer-links a{color:var(--muted)}\nbody.dark-theme .recent-count{background:#1b2a35;color:#38bdf8}
+body.dark-theme .result.show{box-shadow:0 25px 90px rgba(0,0,0,.55)}
+body.dark-theme .content-card h2,body.dark-theme .content-card h3{color:var(--text)}
+body.result-open:before{content:"";position:fixed;inset:0;background:rgba(15,23,42,.42);backdrop-filter:blur(4px);z-index:100}
+.result.show{display:block;position:fixed;z-index:101;left:50%;top:50%;transform:translate(-50%,-50%);width:min(800px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto;margin:0;box-shadow:0 25px 90px rgba(29,55,83,.25)}
+.recent-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.recent-count{display:inline-flex;align-items:center;justify-content:center;min-width:25px;height:24px;padding:0 8px;border-radius:999px;background:#eaf5ff;color:#0878d1;font-size:11px;font-weight:800}
+.recent-sessions-list{display:grid;gap:8px;margin-top:14px}
+.recent-session-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+.recent-session-main{min-width:0}.recent-session-main strong{font:14px var(--mono);color:var(--accent)}
+.recent-session-main span{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.recent-session-meta{color:var(--muted);font-size:11px;text-align:right;white-space:nowrap}.clear-history{margin-top:13px}
+@media(max-width:650px){.result.show{padding:17px;max-height:calc(100vh - 20px);width:calc(100vw - 20px)}.result-quote{padding:11px 13px}.result-quote p{font-size:12px;line-height:1.6}}
+
+
+/* Distraction-free typing mode: additive layout-only changes. */
+header,.intro,.modebar,.bottom,.site-content,footer{
+  transition:opacity .24s ease, max-height .32s ease, margin .32s ease,
+             padding .32s ease, border-width .32s ease;
+}
+body.distraction-free .shell{width:min(1200px,calc(100% - 32px))}
+body.distraction-free header,
+body.distraction-free .intro,
+body.distraction-free .modebar,
+body.distraction-free .bottom,
+body.distraction-free .site-content,
+body.distraction-free footer{
+  opacity:0;visibility:hidden;max-height:0;overflow:hidden;
+  margin-top:0!important;margin-bottom:0!important;
+  padding-top:0!important;padding-bottom:0!important;
+  border-width:0!important;pointer-events:none;
+}
+body.distraction-free main{padding:12px 0 20px}
+body.distraction-free .test-card{transition:padding .25s ease,border-radius .25s ease}
+body.distraction-free .typing-area{min-height:clamp(220px,42vh,520px)}
+#exitFocusBtn{display:none}
+body.distraction-free #exitFocusBtn{display:inline-flex}
+@media(max-width:650px){
+  body.distraction-free .shell{width:calc(100% - 16px)}
+  body.distraction-free main{padding:8px 0 12px}
+  body.distraction-free .test-card{padding:12px;border-radius:12px}
+  body.distraction-free .typing-area{min-height:clamp(210px,40vh,420px)}
+}
+@media(prefers-reduced-motion:reduce){
+  header,.intro,.modebar,.bottom,.site-content,footer,
+  body.distraction-free .test-card{transition:none!important}
+}
+
+
+/* Final interface polish: spacing, alignment, and responsive typing readability. */
+header{gap:18px}
+.brand{flex:0 0 auto;gap:11px;line-height:1.2}
+.site-nav{gap:18px;margin-right:8px}
+.header-right{flex:0 0 auto;gap:8px}
+.pill{white-space:nowrap}
+.intro{align-items:flex-end;margin-bottom:30px}
+.intro .sub{max-width:470px}
+.modebar{row-gap:9px;column-gap:8px}
+.test-card{padding:26px 28px 24px}
+.stats{gap:12px}
+.stat .label{line-height:1.35}
+.typing-area{padding:25px 26px 22px;min-height:218px}
+.words{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.test-hint{align-items:center;line-height:1.5}
+.actions{flex-wrap:wrap}
+.content-card{line-height:1.65}
+.content-card p{margin:8px 0}
+footer{align-items:center;flex-wrap:wrap;line-height:1.6}
+@media(max-width:900px){
+  .intro{gap:18px}
+  .intro .sub{max-width:390px}
+  .site-nav{gap:12px;margin-right:2px}
+  .test-card{padding:22px}
+}
+@media(max-width:650px){
+  .brand{gap:9px}
+  .brand span small{font-size:9px;letter-spacing:0}
+  .site-nav{justify-content:flex-start;gap:18px}
+  .header-right{gap:6px}
+  .pill{padding:8px 9px;font-size:11px}
+  .intro{margin-bottom:24px}
+  .modebar{gap:7px}
+  .modebar button{padding:9px 10px}
+  .test-card{padding:15px}
+  .typing-area{padding:18px 16px;min-height:210px}
+  .words{font-size:clamp(21px,5.2vw,25px);line-height:1.72;max-height:190px}
+  .actions{gap:8px}
+}
+@media(max-width:380px){
+  .brand{font-size:16px}
+  .brand .mark{width:28px;height:28px}
+  .site-nav{gap:13px}
+  .site-nav a{font-size:11px}
+}
+
+/* Compact, consistent header and introductory-section spacing. */
+header{height:auto;min-height:64px;gap:16px;padding:8px 0}
+.brand{gap:9px}
+.brand span small{margin-top:1px;line-height:1.2}
+.site-nav{gap:16px;margin-right:4px}
+.header-right{gap:0}
+main{padding:24px 0 32px}
+.intro{align-items:center;gap:22px;margin-bottom:20px}
+.eyebrow{margin-bottom:7px;line-height:1.3}
+h1{margin:0;line-height:1.06}
+.intro .sub{max-width:470px;line-height:1.5}
+@media(max-width:900px){
+  header{gap:12px}
+  .site-nav{gap:12px}
+  .intro{gap:18px;margin-bottom:18px}
+}
+@media(max-width:650px){
+  header{min-height:0;padding:10px 0;row-gap:9px}
+  .site-nav{gap:16px;margin:0}
+  .header-right{margin-left:auto}
+  main{padding:18px 0 24px}
+  .intro{display:block;margin-bottom:17px}
+  .intro .sub{max-width:none;margin-top:8px;line-height:1.5}
+  .eyebrow{margin-bottom:6px}
+}
+@media(max-width:380px){
+  .site-nav{gap:12px}
+  .site-nav a{font-size:11px}
+}
+
+
+/* Popup panels for learning resources, site information, and recent sessions. */
+.info-modal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:16px;background:rgba(15,23,42,.48);backdrop-filter:blur(4px)}
+.info-modal.show{display:flex}
+.info-dialog{width:min(760px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:16px;box-shadow:0 25px 90px rgba(0,0,0,.25)}
+.info-modal-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 18px;background:var(--panel);border-bottom:1px solid var(--line)}
+.info-modal-head h2{margin:0;font-size:18px;letter-spacing:-.03em}
+.info-modal-body{padding:8px 18px 18px}
+.info-panel{display:none}
+.info-panel.active{display:block}
+.info-panel .content-card{margin:10px 0 0}
+.info-panel .mini-card{margin:10px 0 0}
+body.info-open{overflow:hidden}
+@media(max-width:650px){.info-modal{padding:10px}.info-dialog{max-height:calc(100vh - 20px);border-radius:13px}.info-modal-head{padding:13px 14px}.info-modal-body{padding:6px 12px 14px}.info-panel .content-card{padding:17px}}
+
+/* Font integration: DM Sans for the interface, Poppins for brand/headings.
+   The existing monospace typing text and numeric displays are intentionally preserved. */
+body,
+button,
+select,
+input,
+textarea,
+.site-nav a,
+.footer-links a,
+.pill,
+.modebar button,
+.secondary,
+.primary,
+.sub,
+.test-hint,
+.content-card p,
+.content-card li,
+.info-dialog,
+.info-modal-head,
+.info-panel {
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.brand,
+.brand span,
+h1,
+h2,
+h3,
+.eyebrow,
+.mode-label,
+.mini-title {
+  font-family: "Poppins", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+.brand { font-weight: 700; }
+.brand span small { font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; }
+h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
+  font-family: "Poppins", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+
+
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+  <div class="brand"><div class="mark">IQ</div><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
+  <nav class="site-nav" aria-label="Main navigation"><a href="#typing-lab">Practice</a><a href="#typing-guide" data-popup="typing-guide">Typing Guide</a><a href="#about" data-popup="about">About</a><a href="#recent-sessions" data-popup="recent-sessions">Your Recent Sessions</a></nav><div class="header-right"><button class="pill" id="themeToggle" type="button">Dark Theme</button></div>
+</header>
+<main id="typing-lab">
+  <section class="intro">
+    <div><h1>Make every keystroke<br>count.</h1></div>
+  </section>
+  <div class="modebar" aria-label="Test settings">
+    <span class="mode-label">Time</span>
+    <button data-time="60" class="active">1 min</button><button data-time="120">2 min</button><button data-time="180">3 min</button><button data-time="300">5 min</button><button data-time="600">10 min</button>
+    <span class="divider"></span><span class="mode-label">text</span>
+    <button data-kind="words">Practice</button><button data-kind="quotes" class="active">Forge Glory</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button>
+<button id="newPassageBtn" title="Load another passage">↻ New passage</button>
+  </div>
+  <section class="test-card">
+    <div class="stats">
+      <div class="stat"><div class="label">time left</div><div class="value" id="timeStat">60<span class="unit">sec</span></div></div>
+      <div class="stat"><div class="label">live speed</div><div class="value" id="wpmStat">0<span class="unit">wpm</span></div></div>
+      <div class="stat"><div class="label">accuracy</div><div class="value" id="accuracyStat">100<span class="unit">%</span></div></div>
+      <div class="stat"><div class="label">errors</div><div class="value" id="errorsStat">0</div></div>
+    </div>
+    <div class="typing-area" id="typingArea" tabindex="0" aria-label="Typing test area. Click and start typing.">
+      <div class="words" id="words"></div>
+      <textarea id="typingInput" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type the text shown above"></textarea>
+    </div>
+    <div class="test-hint"><span id="hint">Click the text and start typing to begin.</span></div>
+    <div class="actions"><button class="secondary" id="exitFocusBtn" type="button" aria-label="Exit distraction-free mode">Exit focus</button><button class="primary" id="startBtn">Start typing</button><button class="secondary" id="submitBtn" type="button">Submit</button><button class="secondary" id="restartBtn">↻ Restart test</button></div>
+    <div class="result" id="result">
+      <div class="result-top"><div><h2 id="resultTitle">Nice run.</h2><p id="resultSub">A little better every time.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="closeResultBtn" type="button">Close</button><button class="secondary" id="againBtn">Try again ↗</button></div></div>
+      <blockquote class="result-quote">
+        <p>Work so hard that your loved ones get scared of your routine, your friends question your obsession, and your results leave every skeptic speechless. You were not born to live a mediocre life. Be obsessed with your goals, ruthless with your discipline, and unstoppable in your pursuit.</p>
+        <cite>— Ujjwal Jaiswal</cite>
+      </blockquote>
+      <div class="result-grid">
+        <div><div class="value" id="finalWpm">0</div><div class="label">words / min</div></div>
+        <div><div class="value" id="finalAcc">100%</div><div class="label">accuracy</div></div>
+        <div><div class="value" id="finalRaw">0</div><div class="label">raw wpm</div></div>
+        <div><div class="value" id="finalErrors">0</div><div class="label">mistakes</div></div>
+      </div>
+      <div class="analytics-grid" aria-label="Detailed typing statistics">
+        <div class="analytics-stat"><strong id="finalConsistency">100%</strong><span>Consistency</span></div>
+        <div class="analytics-stat"><strong id="finalKeystrokes">0</strong><span>Keystrokes</span></div>
+        <div class="analytics-stat"><strong id="finalCorrect">0</strong><span>Correct characters</span></div>
+        <div class="analytics-stat"><strong id="finalFixes">0</strong><span>Backspace fixes</span></div>
+      </div>
+      <div class="analytics-chart">
+        <div class="analytics-chart-head"><span>Performance timeline</span><span class="chart-legend"><span class="legend-key"><i class="legend-dot legend-net"></i>Net WPM</span><span class="legend-key"><i class="legend-dot legend-raw"></i>Raw WPM</span></span></div>
+        <svg id="performanceChart" viewBox="0 0 700 180" preserveAspectRatio="none" role="img" aria-label="Net and raw words per minute over time"></svg>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div class="info-modal" id="infoModal" aria-hidden="true">
+  <div class="info-dialog" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="info-modal-head">
+      <h2 id="infoModalTitle">IQTyping</h2>
+      <button class="secondary" id="closeInfoModal" type="button" aria-label="Close popup">Close</button>
+    </div>
+    <div class="info-modal-body">
+      <div class="info-panel" data-popup-panel="recent-sessions"><div class="mini-card" id="recentSessionsPanel">
+  <div class="recent-heading"><div class="mini-title" style="margin-bottom:0">Your Recent Sessions</div><span class="recent-count" id="recentCount">0 saved</span></div>
+  <div id="history" class="history-list" style="margin-top:14px"></div>
+  <p class="empty" id="historyEmpty">Your results will appear here after your first completed session.</p>
+  <div id="recentSessionsList" class="recent-sessions-list"></div>
+  <button class="secondary clear-history" id="clearHistoryBtn" type="button">Clear History</button>
+</div></div>
+      <div class="info-panel" data-popup-panel="typing-guide"><section class="content-card" id="typing-guide">
+    <div class="eyebrow">Free learning resource</div>
+    <h2>How to improve typing speed and accuracy</h2>
+    <p>Build typing speed through regular, deliberate practice. Start at a comfortable pace, keep your eyes on the passage, and prioritize accurate keystrokes before trying to type faster. IQTyping provides timed practice, live words-per-minute (WPM), accuracy feedback, and session history stored in your browser.</p>
+    <div class="content-grid">
+      <div><h3>1. Practice consistently</h3><p>Complete one or two focused sessions each day. Short, repeatable practice is easier to sustain than occasional long sessions.</p></div>
+      <div><h3>2. Accuracy before speed</h3><p>Slow down when errors increase. Correct technique and fewer mistakes help build reliable speed over time.</p></div>
+      <div><h3>3. Use timed tests</h3><p>Try one-minute tests for quick checks and longer tests to practice maintaining a steady pace. Compare results across sessions rather than judging yourself by one run.</p></div>
+      <div><h3>4. Practice useful material</h3><p>Use word drills to build rhythm, motivational quotes to maintain focus, and GK/GS passages to type useful study content.</p></div>
+    </div>
+    <h3>What do WPM and accuracy mean?</h3>
+    <p>Words per minute (WPM) estimates typing speed using the common convention of five characters per word. Accuracy estimates the share of typed characters that match the displayed passage. Both measures matter: high speed with frequent errors may not be useful in exams or everyday work.</p>
+  </section></div>
+      <div class="info-panel" data-popup-panel="about"><section class="content-card" id="about"><h2>About IQTyping</h2><p>IQTyping is a browser-based typing practice tool for learners who want to improve speed, accuracy, and consistency. It includes timed tests, word practice, motivational quotes, general knowledge, GS/NCERT passages, and a session performance summary.</p><p>Your typing session history is intended to stay in this browser on this device. This standalone version does not include an account system or a server-side progress database.</p></section></div>
+      <div class="info-panel" data-popup-panel="contact"><section class="content-card" id="contact"><h2>Contact</h2><p>For questions, feedback, accessibility issues, or bug reports, the site owner should provide a monitored public contact email address here before launch.</p><p><strong>Site owner:</strong> Ujjwal Jaiswal (IQTyping)</p><p><strong>Email:</strong> ujjwaljaiswal03aug@gmail.com</p></section></div>
+      <div class="info-panel" data-popup-panel="privacy"><section class="content-card" id="privacy"><h2>Privacy Policy</h2><p><strong>Last updated: 28 October 2026</strong></p><p>This standalone version stores typing history, best WPM, and completed-test counts in browser local storage so the dashboard can remember progress on the same device. This information is not sent to an IQTyping server by the code in this file. Clearing browser data or using another browser/device may remove or separate that history.</p><p>The site owner must update this policy before enabling analytics, advertising, contact forms, or other third-party services. Advertising providers may use cookies or similar technologies according to their own policies and applicable consent requirements. Add the actual providers, data practices, retention details, and contact method before monetization.</p><p>Do not enter sensitive personal information into the typing tool. If you publish additional services or connect third-party tools, review this policy and applicable laws to ensure it accurately describes the live website.</p></section></div>
+      <div class="info-panel" data-popup-panel="terms"><section class="content-card" id="terms"><h2>Terms of Use</h2><p><strong>Last updated: 28 October 2026</strong></p><p>IQTyping is provided for general typing practice and educational use. Typing scores are estimates intended to help users monitor practice; they are not a guarantee of exam performance or employment outcomes.</p><p>Use the website lawfully and do not attempt to disrupt its operation. The site is provided on an “as available” basis, without a guarantee that it will always be error-free or uninterrupted. The site owner should obtain appropriate legal advice and adapt these terms to the actual business, jurisdiction, and services before launch.</p></section></div>
+    </div>
+  </div>
+</div>
+<footer class="shell"><span>IQ TYPING / PERSONAL TYPING LAB</span><nav class="footer-links" aria-label="Footer navigation"><a href="#typing-lab">Practice</a><a href="#typing-guide" data-popup="typing-guide">Typing Guide</a><a href="#about" data-popup="about">About</a><a href="#contact" data-popup="contact">Contact</a><a href="#privacy" data-popup="privacy">Privacy</a><a href="#terms" data-popup="terms">Terms</a></nav></footer>
+</div>
+<script>
+/* IQTyping offline/cache support. The typing engine and its state are untouched. */
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js", { scope: "/" })
+      .catch(error => console.warn("IQTyping offline support could not be registered:", error));
+  });
+}
+</script>
+<script>
+(() => {
+const wordBank = (`ace act add age ago aid aim air ale all and ant any ape app arc are ark arm art ash ask ate awe axe ado apt amp abs ads aft alt ana ann aah aba ada adz aga ahi ala alb alu ama ami amu ani anu apo arb ard arg arf ars asm asp ass att auk ava avo aye ays azo ake aks ams awn awl ail aha ahh ahs ais als aln agi ani ani aft aga ago air and any arc are arm art ash ask ate axe aim aid ale all ant ape app awe ace act add age ado apt amp ads abs ark ann ada ana ani auk aye avo ava arb asp awl awn aah ale ant art ask ash air add act age aid aim ace ape are and any ago awl ail awe axe ark arm ale all ape apt ace ado ads aft ale arc art ate aid air ant ape ash ask awl awn
+bat bag ban bar bed bee beg bet bid big bin bit bow box boy bus buy bye bad bay bib bio bit bob bog bun but bun bur bud bum brr bra bro bye bra ban bar bat bag bed bet beg bid big bin bit bib bob bog box boy bus bun but buy bay bad bow bee b bea brr bra bro bra bib bam bap bap bas bat ban bar bag bed beg bet ben bey bib bid big bin bit bis boa bob bod bog boo bop bot bow box boy bub bud bug bum bun bur bus but buy bye bcd bdf bps bts bhf bkg bld bld bns bny brr btl btm btu bpi bbl bbl bcp bdr bds bff bht bkg bks bld bps btl btu
+cab can cap car cat cob cod cog cop cot cow coy cry cub cue cup cut cad cam cap car cat cay cep chi cid cis cob cod cog col con coo cop cor cos cot cow cox coy coz cry cub cud cue cup cur cut cwm caw cey cha che chi cis col con cor cos coy cru cru cue cup cut cly cox cad cam cap car cat cob cod cog cop cot cow cub cud cue cup cut can cab cap cat car cod cob cow cup cut cry cub cue cop cot con can cot caw cox coy cep chi cod cog coo cos cur cwm cel cep cer cha che chi cia cid cis col cor coz cru cys cay cey cly cpy ctc cpr cpi cdr cfc cgi cpa csa csi cst cts ctv cwm
+dad dam day den dew did die dig dim dip dog dot dry dug due dub dye dab dam dan dap daw dee def del den dev dew dib die dif dig dim din dip dis dit doc doe dog doh dol dom don dor dos dot dow dry dub dud due dug dun duo dup dur dut dzo dab dad dam day den dew did die dig dim dip dog dot dry dug due dub dye din dip doc doe don dot dug dud dun duo dex deb dal dam dap daw dee del den dev dib die dif dig dim din dip dis dit doc doe dog doh dol dom don dor dos dot dow dry dub dud due dug dun duo dur dye
+ear eat egg ego elf elk elm end era eve eye ebb eel eft eke emu erg err eta eve eon eco edh eds eau eau eat ear egg eke elf elk elm end era eve eye ebb eel eft emu erg err eta eon eco ebb eel ear eat egg ego elf elk elm end era eve eye eat ear egg elf elk elm end era eve eye ebb eft eke emu erg err eta eon eco ens ent ehs eau eek een ean edh eds eff efs ehs eis eke els eme emo ens eon era err eta eve ewe eye ewt eww
+fab fad fag fan far fat fax fay fed fee fen few fez fib fie fig fin fir fit fix flu fly fob foe fog fon foo for fox fry fun fur fib fad fan far fat fax fed fee fen few fib fig fin fit fix flu fly fob foe fog for fox fry fun fur fab fag fan far fat fed fee fen few fib fig fin fir fit fix flu fly fob foe fog for fox fry fun fur fem fer fes feh fid fil fit flu fly fop fom fon fot fou fro fum fug fud fub fau faw fey
+gab gag gal gap gas gat gay gel gem get gig gin gip git gnu gob god goo got gum gun gut guy gym gab gag gal gap gas gel gem get gig gin gob god goo got gum gun gut guy gym gad gam gan gar ged gee gen gey ghi gib gid gif gig gil gin gip gis git gnu goa gob goe gon goo gor got guv gul gum gun gur gus gut gyp gad gam gap gas gel gem get gig gin god got gum gun gut guy gym gab gag gal gap gas gel gem get gig gin gob god goo got gum gun gut guy gym ged gee gen gey ghi gib gid gif gil gip gis git gnu goa goe gon gor guv gul gur gus gyp
+had hag ham has hat hay hem hen her hew hex hey hid him hip his hit hob hod hoe hog hop hot how hoy hub hue hug huh hum hut haw hep hep hem hen hes het hie him hin hip his hit hob hod hoe hog hop hot how hub hue hug hum hut hah hah ham had hag has hat hay hem hen her hex hid him hip his hit hoe hog hop hot how hug hum hut haw heh hon hos hup hye
+ice ich ick icy ids ifs ilk ill imp ink inn ins ion ire irk ism its ivy iso ire ice ill ink inn ion ire irk ivy imp ilk ism its ids ins ifs icy ich ick ism iso ita ire irk ilk ill inn ink ion imp ivy its inn ice ink ill ion imp ire ivy ilk irk ism its ids ins ifs icy ich ick iso ita ire ilk ill ink inn imp ion irk ivy its ids ins
+jab jag jam jar jaw jay jet jew jib jig jin job jog jot joy jug jut jut jag jam jar jaw jet jew jib jig jin job jog jot joy jug jut jab jag jam jar jaw jet jib jig jin job jog jot joy jug jut jow jun jus jup jor jap jee jud jod jem jes jit jid jiz jow jag jam jar jaw jet jib jig jin job jog jot joy jug jut jow jun jus jup jor jap jee jud jod jem jes jit jid jiz jow
+keg ken kep key kid kin kip kit koi kop kor kos kot koa kae kab kaf kas kat kay kea ked kef keg ken kep ket khi kid kin kip kir kit koa kob koi kop kor kos kot koa kae kab kaf kas kat kay kea ked kef keg ken kep ket khi kid kin kip kir kit koi kop kor kos kot kep keg ken key kid kin kit koi koa kay kab kaf kas kat ken keg kep key kid kin kip kit koi kop kor kos kot koa kay kae ked kef khi kob kir
+lab lac lad lag lap law lax lay lea led leg let leu lid lie lip lit lob log loo lop lot low lug lux lye lab lac lad lag lap law lax lay lea led leg let leu lid lie lip lit lob log loo lop lot low lug lux lye lib lin lis loo lop lot low lug lum luv lac lad lag lap law lay lea led leg let lid lie lip lit lob log lot low lug lax lye lib lin lis
+mad man map mat maw max may med meg mel men met mew mid mig mil mim mix mob mod mog mom mon moo mop mot mow mud mug mum mun mus mut myc mac mad man map mat maw max may med men met mew mid mil mix mob mod mom moo mop mow mud mug mum mun mus mut mac mag mal mam mar mas maw max med meg mel mem men met mew mho mic mid mig mil mim mir mis mix moa mob moc mod mog mol mom mon moo mop mor mos mot mow mud mug mum mun mus mut myc
+nab nag nah nam nan nap nay neb nee net new nib nil nip nit nix nob nod nog nor nos not now nth nub nun nus nut nae nae nag nah nam nap nay neb nee net new nib nil nip nit nix nob nod nog nor nos not now nub nun nut nan nip net nod nag nab nap nor nit nix now new nil nod not nun nut nee nab nag nap nay neb net new nib nip nit nob nod nor not now nub nun nut nae naw nee nor nos nix nag nam nan nay
+oaf oak oar oat obi obo obs och odd ode off oft ohm oil oka old ole one ono ons ooh oom ope opt ora orb orc ore ors ort oud our out ova owe owl own oxy oba oba oda oda off oft ohm oil oak oar oat old one ore orb ore our out owe owl own opt oaf oak oar oat obi odd ode off oil old one ore orb our out owe owl own ova oxy oka ole ono ooh ope ora ors ort oud oba obo obs och oom ons
+pad pal pan pap par pat paw pay pea peg pen pep per pet pew pie pig pin pip pit pix ply pod poh poi pol pom pop pot pow pro pry pub pud pug pun pup pus put pya pac pad pal pan pap par pat paw pay pea peg pen pep per pet pew pie pig pin pip pit pod pop pot pow pro pry pub pud pug pun pup pus put pac pah pak pam pas pax pec ped peh pel pem pes phi pho pia pir pis piu plu poh pol pom pon pos pre pry psi pya pht
+qat qis qua que qui quo qin qis qat qua que qui quo qin qis qat qua que qui quo qat qua que qui quo qin qat qua que qui quo qis qat qua que qui quo qin qis qat qua que qui quo qin qat qua que qui quo qat qis qua que qui quo qin qat qua que qui quo qin qis qat qua que qui quo qin qat qua que qui quo qin qat qua que qui quo
+rag ram ran rap rat raw ray reb rec red ref rem rep res ret rev rex rib rid rig rim rip rob roc rod roe rot row rub rue rug rum run rut rya rah rai raj raj rap ras rav raw ray reb rec red ref reg rem rep res ret rev rex rib rid rig rim rip rob roc rod roe rot row rub rue rug rum run rut ryu rho ria rif rin ris rok rom ros rya
+sad sag sap sat saw sax say sea sec see sen set sew sex she shy sib sic sim sin sip sir sis sit six ska ski sky sly sob sod sol son sop sot sow soy spa spy sty sub sue sum sun sup sus syn sal san sap sar sau saw sax say sea see sel sen ser set sew she shy sib sic sim sin sip sir sit six ska ski sky sly sob sod sol son sop sot sow soy spa spy sty sub sue sum sun sup
+tab tad tag tan tap tar tat tax tea ted tee ten the tho thy tic tie tin tip tis tit toe tog tom ton too top tor tot tow toy try tub tug tui tun tup tut twa two tae taj tam tao tas tau taw teg tel tem tes tet tew tho tik til tod tod tog tom ton tor tot tow toy try tub tug tui tun tup tut twa two
+ugh uke ulu ump uni uns upo ups urb urd urn use uta uts udo ugh uke ulu ump uni uns ups urb urd urn use uta uts udo ugh uke ulu ump uni uns ups urb urd urn use uta uts udo ulu urn use ups uni ugh uke ump urb urd uta uts udo
+van vat vau vav vaw vee vet vex via vid vie vig vim vis voe vog von vow vox vug van vat vau vav vaw vee vet vex via vid vie vig vim vis voe vog von vow vox vug van vat vee vet vex via vie vim vis vow vox vug vid vig vog von vau vav vaw voe
+wad wag wan wap war was wat wax way web wed wee wen wet wha who why wig win wis wit wiz woe wok won woo wow wry wud wye wab wae wan wap war was wax way web wed wee wen wet wha who why wig win wis wit woe wok won woo wow wry wud wye wad wag wap wat wax web wed wee wet who why win wit woe wok won wow wry
+xis xed xem xen xer xii xis xed xem xen xer xii xis xed xem xen xer xii xat xeb xel xes xip xon xum xus xyr xix xee xai xao xou xad xag xak xam xap xar xas xat xaw xay xed xeg xel xem xen xep xer xes xet xew xey xib xic xid xie xif xig xih xii xij xik xil xim xin xio xip xir xis xit xiv xiz xob xoc xod xoe xog xoi xok xol xom xon xoo xop xor xos xot xow xox xoy xub xuc xud xue xug xum xun xup xur xus xut xuy
+yak yam yap yar yaw yay yea yen yep yes yet yew yin yip yob yod yok yon you yow yob yod yok yon you yow yak yam yap yar yaw yay yea yen yep yes yet yew yin yip yex yid yip yis yod yog yot yow yus yut yue yai yau yeh yel yem yen yer yes yew yex yid yin yip yis yob yod yog yok yon you yow yus yut
+zag zap zas zax zed zee zek zep zig zin zip zit zoa zob zod zoe zoo zag zap zas zax zed zee zek zep zig zin zip zit zoa zob zod zoe zoo zar zax zeb zel zen zep zes zho zib zil zim zin zip zit zoa zob zod zoe zol zon zoo zub zag zap zed zee zig zip zit zoo
+
+`).replace(/[.,;]/g,"").split(/\s+/);
+const gkBank = [
+"the largest planet in our solar system is jupiter",
+"the pacific ocean is the largest ocean on earth",
+`Earth is the third planet from the sun and is home to many forms of life. Mars is known as the red planet due to iron-rich dust on its surface. Jupiter is the largest planet in our solar system, while Mercury is the closest planet to the sun.
+
+Water is made of two hydrogen atoms and one oxygen atom. Its chemical formula is H2O. Gold has the chemical symbol Au, while silver has the symbol Ag. Iron is known by the symbol Fe, and copper is represented by Cu. Oxygen is needed for human breathing, while plants use carbon dioxide during photosynthesis. Green leaves contain chlorophyll, which helps plants absorb light and make food.
+
+The human heart pumps blood through a network of blood vessels. The brain controls thought, memory, movement, and many body functions. The lungs help the body take in oxygen and release carbon dioxide. The stomach helps digest food, while the small intestine absorbs most nutrients. Bones support the body and protect vital organs. Muscles help the body move, lift, and perform daily tasks.
+
+Plants need water, light, air, and nutrients to grow. Their roots absorb water and minerals from the soil. Their leaves capture sunlight to produce food. Bees help many plants reproduce by carrying pollen from one flower to another. Trees absorb carbon dioxide and release oxygen during photosynthesis. Forests provide shelter for wildlife and help maintain balance in nature.
+
+The ocean covers most of Earth's surface and contains a vast range of marine life. Whales are mammals that breathe air through lungs. Sharks are fish with skeletons made mainly of cartilage. Dolphins use sound to communicate and locate objects underwater. Coral reefs provide shelter for many sea creatures. Rivers carry fresh water across land and support farms, forests, and human settlements.
+
+The atmosphere surrounds Earth and protects life from many harmful effects of space. Nitrogen forms the largest share of Earth's atmosphere, followed by oxygen. Clouds form when water vapor cools and condenses into tiny droplets or ice crystals. Rain returns water to the land and helps refill rivers, lakes, and groundwater. The water cycle includes evaporation, condensation, and precipitation.
+
+Sound travels through air as waves, while light can travel through a vacuum. Light travels much faster than sound. A rainbow forms when sunlight interacts with water droplets in the air. Gravity pulls objects toward one another and keeps planets in orbit around stars. Friction acts against motion between surfaces, while magnetism can attract or repel certain materials.
+
+The Earth rotates on its axis, creating day and night. It takes about one year for Earth to orbit the sun. The moon's gravity plays a major role in ocean tides. Stars appear small because many are extremely far from Earth. The Milky Way is the galaxy that contains our solar system.
+
+Reading facts every day can improve knowledge, focus, and memory. Regular typing practice can also build speed and accuracy. A learner can begin with short sentences and gradually move toward longer passages. Checking errors after each test helps identify weak areas. Daily effort, clear goals, and steady practice can turn small gains into lasting skills. Progress comes from repeated action, careful review, and a strong desire to learn.`
+];
+const gsNcertBank = [
+"the constitution of india came into effect on 26 january 1950",
+"the fundamental rights are described in part three of the indian constitution",
+"the lok sabha is the lower house of the indian parliament",
+"the reserve bank of india is the central bank of india",
+"the himalayas are young fold mountains",
+"the dandi march took place in 1930",
+"democracy allows citizens to choose their representatives",
+"photosynthesis allows green plants to convert light energy into chemical energy",
+"newton's first law of motion is known as the law of inertia",
+"the water cycle includes evaporation condensation and precipitation",
+"inflation refers to a sustained rise in the general price level",
+"the supreme court of india is the highest court in the indian judicial system"
+];
+
+const quoteBank = [
+"discipline over motivation, Greatness does not come from waiting for the perfect moment or feeling motivated every morning. It comes from showing up when your mind wants to quit, continuing when progress feels invisible, and choosing your long-term goals over temporary comfort. Every small action you repeat today becomes part of the person you are building for tomorrow.",
+"focus on your own journey, Stop measuring your progress against someone else's achievements, because you have never walked their exact path or experienced their struggles. Your responsibility is to become better than the person you were yesterday. Protect your attention, respect your pace, and keep moving forward. Real progress begins when you stop competing with everyone else and start mastering yourself.",
+"the power of consistency, You do not need to change your entire life in a single day. You only need to make a decision that moves you slightly closer to the person you want to become. Repeat that decision tomorrow, and again the day after. Over time, ordinary efforts become extraordinary results, and consistency turns distant dreams into your everyday reality.",
+"Great things are done by a series of small things brought together.",
+"success requires patience, Every meaningful achievement requires a period when the results are smaller than the effort you invest. During this period, many people lose patience, question their abilities, and abandon their goals. Those who continue learning, adapting, and working through uncertainty give themselves the opportunity to succeed. Remember that invisible growth often happens long before visible success arrives.",
+"build yourself in silence, You do not need to announce every ambition, explain every decision, or prove your potential to everyone around you. Sometimes the strongest response is to remain focused, develop your skills, and let your progress speak for itself. Spend less energy seeking approval and more energy building a life that reflects your values, your discipline, and your determination.",
+"learn from failure, Failure is not proof that you are incapable of achieving something meaningful. It is information that reveals what needs improvement, which strategies are ineffective, and where your understanding remains incomplete. Instead of allowing mistakes to destroy your confidence, examine them honestly and learn from them. Every setback can become valuable experience when you refuse to waste its lessons.",
+"protect your attention, Your attention is one of the most valuable resources you possess, because whatever receives it repeatedly begins to influence your thoughts, habits, and decisions. Choose carefully what deserves your focus. Reduce unnecessary distractions, spend time developing useful abilities, and give important tasks your full presence. A focused mind can accomplish more than a busy mind constantly changing direction.",
+"become comfortable with discomfort, Growth often begins when you choose something difficult over something familiar. Learning a challenging skill, exercising when you feel tired, or studying when distractions seem more attractive can feel uncomfortable at first. However, every time you willingly face a manageable challenge, you develop confidence in your ability to handle greater responsibilities and unfamiliar situations in the future.",
+"small steps create big changes Never underestimate the value of a small improvement repeated consistently. One additional page studied, one mistake corrected, one honest conversation, or one focused practice session may seem insignificant when considered alone. Yet these actions accumulate and gradually change your abilities, confidence, and opportunities. The secret is not making every day extraordinary but making ordinary days count toward something meaningful.",
+"your future is built today, The future you imagine is influenced by the choices you make when nobody is watching. Your daily routines, the information you consume, the promises you keep, and the challenges you avoid all contribute to the direction of your life. You cannot control every circumstance, but you can take responsibility for your next decision and make it support the future you want.",
+
+"Every keying effort brings you one step closer to mastery.",
+"Success is built through consistent keying, focused practice, and endless improvement.",
+"Don't just press keys; make every keying session count.",
+"Keyboarding is not just a skill; it is the art of transforming thoughts into words.",
+"Master keyboarding today, and unlock greater productivity tomorrow.",
+"Speed comes with practice, but keyboarding excellence comes with precision.",
+"Every text entry is an opportunity to improve your speed and accuracy.",
+"Turn every text entry into a step toward perfection.",
+"Great things begin with a single word and a determined mind.",
+"Accuracy in data entry reflects discipline in every detail.",
+"Speed makes you productive, but accuracy makes you valuable.",
+"Master the details, and excellence will follow.",
+"Your fingers follow your thoughts; train them to move with purpose.",
+"Inputting words is easy; inputting excellence requires discipline.",
+"Consistency transforms ordinary input into extraordinary performance.",
+"Transcription teaches you to listen carefully, think clearly, and type precisely.",
+"Every correctly transcribed word reflects patience and attention to detail.",
+"Precision is the difference between simply typing and mastering transcription.",
+"Transform raw thoughts into meaningful words through practice and precision.",
+"Great ideas deserve great execution; master the art of word processing.",
+"Your words create possibilities; your skills bring them to life.",
+"Every text input is a reflection of your focus and control.",
+"Train your fingers to turn every thought into flawless text.",
+"Excellence begins when accuracy becomes a habit.",
+"Every keystroke is a small investment in your future mastery.",
+"Don't waste keystrokes; make every movement meaningful.",
+"Thousands of deliberate keystrokes create extraordinary skill.",
+
+
+
+
+"Every keying effort brings you one step closer to mastery.",
+"Success is built through consistent keying, focused practice, and endless improvement.",
+"Don't just press keys; make every keying session count.",
+"Keyboarding is not just a skill; it is the art of transforming thoughts into words.",
+"Master keyboarding today, and unlock greater productivity tomorrow.",
+"Speed comes with practice, but keyboarding excellence comes with precision.",
+"Every text entry is an opportunity to improve your speed and accuracy.",
+"Turn every text entry into a step toward perfection.",
+"Great things begin with a single word and a determined mind.",
+"Accuracy in data entry reflects discipline in every detail.",
+"Speed makes you productive, but accuracy makes you valuable.",
+"Master the details, and excellence will follow.",
+"Your fingers follow your thoughts; train them to move with purpose.",
+"Inputting words is easy; inputting excellence requires discipline.",
+"Consistency transforms ordinary input into extraordinary performance.",
+"Transcription teaches you to listen carefully, think clearly, and type precisely.",
+"Every correctly transcribed word reflects patience and attention to detail.",
+"Precision is the difference between simply typing and mastering transcription.",
+"Transform raw thoughts into meaningful words through practice and precision.",
+"Great ideas deserve great execution; master the art of word processing.",
+"Your words create possibilities; your skills bring them to life.",
+"Every text input is a reflection of your focus and control.",
+"Train your fingers to turn every thought into flawless text.",
+"Excellence begins when accuracy becomes a habit.",
+"Every keystroke is a small investment in your future mastery.",
+"Don't waste keystrokes; make every movement meaningful.",
+"Thousands of deliberate keystrokes create extraordinary skill.",
+"Strong keyboard skills open doors to greater opportunities.",
+"Develop your keyboard skills today to accelerate your productivity tomorrow.",
+"Every professional skill begins with consistent practice.",
+"Practice with purpose, improve with patience, and succeed with confidence.",
+"Every minute of typing practice brings you closer to your goals.",
+"Don't practice until you get it right; practice until excellence becomes natural.",
+"Train your fingers, discipline your mind, and strengthen your performance.",
+"Consistent keyboard training transforms beginners into confident typists.",
+"Your progress depends on the quality of your training.",
+"Typing proficiency is earned through accuracy, consistency, and dedication.",
+"Build proficiency today; unlock productivity for a lifetime.",
+"True proficiency means performing accurately even under pressure.",
+"Speed typing is not about rushing; it is about mastering rhythm and control.",
+"Let your accuracy lead and your speed follow.",
+"The fastest fingers belong to minds trained through discipline.",
+"Master touch typing, trust your fingers, and keep your eyes on your goals.",
+"When your fingers know the keyboard, your mind is free to create.",
+"Touch typing turns conscious effort into effortless execution.",
+"Digital literacy begins with the ability to communicate confidently in a digital world.",
+"Build digital skills today to create opportunities tomorrow.",
+"Technology rewards those who continuously learn.",
+"Great text composition begins with clear thoughts and precise execution.",
+"Turn your ideas into impact, one sentence at a time.",
+"Your thoughts deserve clarity; your words deserve precision.",
+"Keyboard proficiency is not achieved overnight; it is built keystroke by keystroke.",
+"Train for precision, develop control, and earn proficiency.",
+"Master your keyboard, and expand what your hands can accomplish.",
+"Your typing performance reflects the discipline behind your practice.",
+"Measure your progress, learn from your mistakes, and improve your performance.",
+"Today's performance is tomorrow's starting point.",
+"Find your KeyFlow, master your rhythm, and let your fingers do the talking.",
+"When focus meets rhythm, KeyFlow becomes effortless.",
+"Don't chase speed; discover your KeyFlow.",
+"Typing is a craft; every keystroke makes you better.",
+"Build your KeyCraft through patience, precision, and practice.",
+"Great skills are crafted, never gifted.",
+"Become the master of your keyboard, not a prisoner of your mistakes.",
+"A KeyMaster is built through thousands of focused repetitions.",
+"Master every key before you chase every record.",
+"Forge your skills, sharpen your accuracy, and master every keystroke.",
+"Great typists are forged through discipline, not shortcuts.",
+"Enter the keyboard, embrace the challenge, and forge your excellence.",
+"Feel the KeyRush, but never sacrifice accuracy for speed.",
+"Let your ambition move faster than your excuses.",
+"Chase progress, embrace the challenge, and enjoy the KeyRush.",
+"Ignite your potential and let your fingers move like a blaze.",
+"Speed is your weapon; accuracy is your strength.",
+"Set your goals ablaze with every keystroke.",
+"Find your rhythm, follow your KeyPulse, and keep improving.",
+"Every keystroke has a rhythm; every typist has a journey.",
+"Let discipline become the KeyPulse behind your progress.",
+"Sprint toward improvement, but never run away from precision.",
+"Every KeySprint begins with one determined keystroke.",
+"Speed is developed through consistency, not desperation.",
+"Find your TypeFlow and let your thoughts move effortlessly.",
+"The secret to TypeFlow is focus without frustration.",
+"When your mind is clear and your fingers are trained, TypeFlow begins.",
+"Craft your skills one word, one sentence, and one session at a time.",
+"TypeCraft is the combination of patience, precision, and persistence.",
+"Don't just type words; craft excellence.",
+"Forge your future with discipline, determination, and every keystroke.",
+"Your typing skills are forged through challenges, not comfort.",
+"Every mistake is an opportunity to forge a stronger typist.",
+"Feel the TypeRush, challenge your limits, and keep moving forward.",
+"Let your fingers chase excellence while your mind maintains control.",
+"The real TypeRush begins when practice becomes passion.",
+"Every typing session is another chapter in your TypeQuest.",
+"The journey to mastery begins with the courage to start.",
+"Your TypeQuest has no finish line when improvement is endless.",
+"Become a TypeMaster through patience, practice, and precision.",
+"A true TypeMaster never stops learning.",
+"Master the basics, perfect the details, and own the keyboard.",
+"Enter your TypeZone, eliminate distractions, and focus on progress.",
+"Great performance begins when distractions end.",
+"Find your TypeZone and turn concentration into excellence.",
+"One keystroke may seem insignificant, but thousands can build mastery.",
+"Make every keystroke count; your future is built one action at a time.",
+"Strike every key with purpose and every goal with determination.",
+"Precision in every Keystrike, excellence in every performance.",
+"Let your thoughts flow, your fingers follow, and your confidence grow.",
+"Typeflow begins where hesitation ends.",
+"Rhythm creates flow, practice creates rhythm, and discipline creates mastery.",
+"Find your Keyflow and make every moment productive.",
+"Hard work forges strong fingers and an even stronger mindset.",
+"Forge your skills today; let your results speak tomorrow.",
+"Words have power; mastering them gives your thoughts a voice.",
+"Develop your Wordcraft and turn simple sentences into meaningful communication.",
+"Excellence is a craft developed through deliberate practice.",
+"Every word you type is another opportunity to perfect your Typecraft.",
+"Turn every finger movement into progress through consistent practice.",
+"Keymotion is the rhythm of discipline translated into action.",
+"The keyboard has many keys, but mastery begins with one.",
+"Become a Keymaster by mastering accuracy before chasing speed.",
+"Let your passion for typing create a journey of continuous improvement.",
+"Strong keyboard skills are the foundation of efficient digital communication.",
+"Your keyboard is an instrument; your fingers are the performers.",
+"Every word typed correctly is a victory over carelessness.",
+"Accuracy is not an accident; it is the result of focused repetition.",
+"Your fingers become faster when your mind becomes calmer.",
+"Speed without accuracy is wasted effort.",
+"Every mistake is a lesson waiting to improve your next attempt.",
+"Practice consistently, type confidently, and perform exceptionally.",
+"Great typists are not born; they are developed through dedication.",
+"Your keyboard cannot define your limits; your discipline defines your progress.",
+"Turn your typing weakness into your greatest strength.",
+"Don't count the hours you practice; make every hour count.",
+"Let every session bring you closer to the typist you aspire to become.",
+"Consistency is the silent force behind extraordinary typing skills.",
+"Every improvement begins with the decision to practice again.",
+"Train your hands until precision becomes instinct.",
+"Focus on accuracy, develop your rhythm, and allow speed to become your reward.",
+"Typing is more than pressing keys; it is the art of expressing thoughts efficiently.",
+"Your keyboard is full of possibilities; your discipline unlocks them.",
+"Don't let a slow beginning stop you from achieving remarkable speed.",
+"Every second of focused practice contributes to a lifetime of productivity.",
+"Build accuracy first, develop speed second, and achieve mastery through consistency.",
+"Your greatest typing achievement is the progress you make every day.",
+"Let your fingers move with confidence and your mind work with clarity.",
+"Master the rhythm of the keyboard and unlock the power of productivity.",
+"Every challenge you overcome makes your next typing session stronger.",
+"Your typing journey is measured by improvement, not perfection.",
+"Never underestimate the power of a single focused practice session.",
+"Turn repetition into rhythm, rhythm into confidence, and confidence into excellence.",
+"Small improvements repeated daily create extraordinary results.",
+"Train in silence, improve with discipline, and let your performance make the noise.",
+"Make every keystroke count; your future is built one action at a time.",
+
+
+"Be so obsessed with your goals that distractions lose their attraction.",
+"Obsession turns ordinary ambitions into extraordinary achievements.",
+"Let your obsession become stronger than your excuses.",
+"Be obsessed with progress, not with proving people wrong.",
+"Greatness begins when your ambition becomes an obsession.",
+"Don't just dream about success; become obsessed with creating it.",
+"Let your goals occupy your mind and your actions define your commitment.",
+"Be relentlessly obsessed with becoming better than you were yesterday.",
+"Your obsession should be building a life that once seemed impossible.",
+"Stay obsessed with the vision, even when the results are invisible.",
+"Ordinary people seek comfort; extraordinary people pursue meaningful challenges.",
+"Turn your ambition into obsession and your obsession into consistent action.",
+"Be obsessed with the process, and the results will eventually follow.",
+"Let nothing distract you from the person you are determined to become.",
+"An extraordinary future demands extraordinary commitment.",
+"Discipline is choosing your ambition over your temporary comfort.",
+"Work when motivation disappears; that's where discipline begins.",
+"Be addicted to improvement, committed to discipline, and loyal to your vision.",
+"Your routine should reflect the future you claim to desire.",
+"Discipline is the bridge between obsession and achievement.",
+"Stop negotiating with your excuses and start honoring your commitments.",
+"Let your discipline speak louder than your intentions.",
+"Build habits so powerful that consistency becomes your natural response.",
+"Success respects those who remain disciplined when nobody is watching.",
+"Your future is being shaped by what you repeatedly do today.",
+"Don't wait for the perfect mood; develop the discipline to begin.",
+"Make consistency your identity and discipline your foundation.",
+"Be relentless with your efforts and patient with your results.",
+"Your standards should be higher than your excuses.",
+"Discipline today creates the freedom you desire tomorrow.",
+"Stay hungry for growth, even when you have achieved success.",
+"Never allow temporary achievements to destroy your hunger for greatness.",
+"Develop a hunger so strong that comfort can no longer satisfy you.",
+"Be hungry for knowledge, thirsty for improvement, and committed to excellence.",
+"Your ambition should never be smaller than your potential.",
+"Stay hungry, stay humble, and keep building.",
+"Greatness belongs to those who refuse to settle for average.",
+"Let your hunger for progress overpower your fear of failure.",
+"Don't become satisfied with yesterday's achievements.",
+"Keep chasing excellence even when the world tells you that you have enough.",
+"Your dreams deserve more than occasional effort.",
+"Be hungry enough to begin and disciplined enough to continue.",
+"Never lose the hunger that made you start.",
+"Make personal growth your greatest addiction.",
+"An ambitious mind never runs out of mountains to climb.",
+"Become so focused that obstacles become part of your training.",
+"Let failure educate you, discipline strengthen you, and ambition guide you.",
+"Never allow temporary setbacks to become permanent excuses.",
+"Be impossible to discourage and difficult to distract.",
+"Your determination should survive every difficult season.",
+"Fall seven times, learn seven lessons, and rise eight times stronger.",
+"Obstacles are temporary; the character you build while overcoming them remains.",
+"Develop a mindset that refuses to surrender to temporary discomfort.",
+"Be stronger than your excuses and more persistent than your failures.",
+"Let every setback become another reason to improve.",
+"Your limits are not permanent; your willingness to improve determines your progress.",
+"Keep moving forward, even when progress feels painfully slow.",
+"Become the person who never abandons the mission.",
+"Nothing changes until your commitment becomes stronger than your resistance.",
+"Unstoppable progress begins with an unbreakable decision.",
+"Be willing to sacrifice temporary pleasure for permanent progress.",
+"Every meaningful achievement demands a price; pay it with dedication.",
+"Your comfort zone cannot produce the extraordinary life you imagine.",
+"Give up the habits that compete with the future you desire.",
+"Work so hard that your progress becomes impossible to ignore.",
+"Choose the difficult path when it leads to meaningful growth.",
+"Great achievements demand patience, sacrifice, and relentless execution.",
+"Your dreams require commitment, not occasional enthusiasm.",
+"Make sacrifices today that your future self will thank you for.",
+"Don't sacrifice your future for temporary comfort.",
+"Behind every extraordinary result is an extraordinary amount of unseen effort.",
+"Let your actions reveal the sacrifices behind your ambition.",
+"Success is built during the hours nobody applauds.",
+"Work in silence, sacrifice with purpose, and celebrate with gratitude.",
+"Your dedication today determines the opportunities you create tomorrow.",
+"Protect your focus like your future depends on it.",
+"One clear vision is more powerful than a thousand scattered ambitions.",
+"Eliminate distractions before they eliminate your potential.",
+"Focus is the ability to say no to everything that doesn't serve your mission.",
+"Give your attention to what deserves your ambition.",
+"Concentrate your energy, multiply your efforts, and accelerate your progress.",
+"Your attention is valuable; invest it wisely.",
+"Stop dividing your energy between countless distractions and one meaningful goal.",
+"Deep focus creates extraordinary opportunities for growth.",
+"Master your attention before attempting to master your ambitions.",
+"Be present in every action and intentional in every decision.",
+"Your greatest advantage is the ability to remain focused when others become distracted.",
+"Less distraction, more dedication, greater achievement.",
+"Let your vision determine your priorities and your priorities shape your routine.",
+"Focus until the work becomes your strongest statement.",
+"Work quietly until your results introduce you.",
+"Let your achievements make the noise your words never could.",
+"Build in silence, improve in private, and emerge with undeniable results.",
+"Don't announce your ambition; demonstrate your commitment.",
+"While others discuss their dreams, dedicate yourself to building yours.",
+"Stay low-key, work relentlessly, and let excellence reveal itself.",
+"Your progress doesn't need an audience; it needs consistency.",
+"Stop seeking applause for efforts that haven't produced results.",
+"Let your transformation surprise everyone, including your former self.",
+"Be more interested in progress than recognition.",
+"Work behind the scenes until your results become the headline.",
+"Silence your doubts with action and your critics with achievement.",
+"Your routine is your preparation; your results are your introduction.",
+"Don't chase attention when you could be building excellence.",
+"Become undeniable through the quality of your work.",
+"Don't wish for an extraordinary life; develop extraordinary habits.",
+"Average results come from average commitment; greatness demands more.",
+"Refuse to let your potential remain unused.",
+"Become so committed to growth that your old limitations feel unfamiliar.",
+"Your greatest project is the person you are becoming.",
+"Don't compete for an average life when you have the capacity to build something exceptional.",
+"Excellence is not an act; it is a standard you practice daily.",
+"Become a student of improvement and a practitioner of discipline.",
+"Make your existence a continuous journey of becoming better.",
+"Never stop evolving into someone your younger self would admire.",
+"Be committed to a standard that makes ordinary effort insufficient.",
+"Greatness is built through decisions that nobody else sees.",
+"Don't settle for being capable when you can become exceptional.",
+"Your potential deserves your highest level of commitment.",
+"Build yourself into someone your goals require you to become.",
+"Become obsessed with learning, and ignorance will never become your limitation.",
+"Master one skill at a time, but never stop expanding your knowledge.",
+"Let curiosity fuel your learning and discipline strengthen your mastery.",
+"Every mistake is an opportunity to understand something more deeply.",
+"Be obsessed with understanding, not just with collecting information.",
+"Practice until difficult concepts become natural and complex problems become manageable.",
+"Knowledge creates possibilities; consistent application creates results.",
+"Never become too successful to remain a student.",
+"Learn relentlessly, practice deliberately, and improve continuously.",
+"Mastery belongs to those who respect the smallest details.",
+"Your willingness to learn determines how far your potential can grow.",
+"Turn every failure into feedback and every lesson into progress.",
+"Become a lifelong learner with an uncompromising commitment to excellence.",
+"Read with curiosity, practice with intention, and execute with confidence.",
+"True mastery begins when you become obsessed with the details.",
+"Obsessed with progress. Committed to greatness.",
+"Dream relentlessly. Execute ruthlessly.",
+"Stay hungry. Stay disciplined. Stay obsessed.",
+"Less talk. More obsession. Greater results.",
+"Obsession fuels ambition; discipline delivers results.",
+"Built by discipline. Driven by obsession.",
+"Think bigger. Work harder. Stay relentless.",
+"Obsess over the process, not the applause.",
+"Be relentless, not reckless.",
+"Consistency is obsession in action.",
+"Let ambition consume your excuses.",
+"Focused minds create extraordinary realities.",
+"Outwork your limitations.",
+"Make excellence your obsession.",
+"Chase mastery, not validation.",
+"Be addicted to becoming better.",
+"Your vision deserves your obsession.",
+"Stay obsessed with the possibilities.",
+"Create habits that match your ambition.",
+"Be relentless about your evolution.",
+"Work so hard that your loved ones question your routine, your friends wonder about your obsession, and your results answer every question.",
+"Be so committed to your vision that temporary loneliness never convinces you to abandon your purpose.",
+"One day, the discipline that feels exhausting will become the foundation of the life you once dreamed about.",
+"Your future self is watching every decision you make today; give that person a reason to be proud.",
+"Don't let the desire for an easy life destroy the opportunity to build an extraordinary one.",
+"Become obsessed with the work required to achieve what others only imagine.",
+"Let your ambition challenge your comfort, your discipline challenge your excuses, and your progress challenge your limitations.",
+"Nobody can give you the future you desire; you must build it through your own decisions.",
+"Be willing to spend years developing a skill that others expect to master in weeks.",
+"Your obsession means nothing without the discipline to turn it into daily action.",
+"Don't become a prisoner of your ambitions; become the architect of their realization.",
+"Work until your habits reflect your ambitions, your skills reflect your dedication, and your results reflect your discipline.",
+"Your greatest transformation begins when you stop making excuses for the person you have the power to become.",
+"Be so dedicated to your growth that wasting your potential becomes more uncomfortable than working hard.",
+"Build a life where your daily actions are worthy of your biggest dreams."
+
+
+];
+const $ = id => document.getElementById(id);
+const input=$("typingInput"), wordsEl=$("words"), area=$("typingArea");
+ function enterFocusMode(){
+  if(!document.body.classList.contains("distraction-free")){
+   document.body.classList.add("distraction-free");
+  }
+ }
+ function exitFocusMode(){
+  document.body.classList.remove("distraction-free");
+ }
+let duration=60, kind="quotes", started=false, finished=false, paused=false, startAt=0, elapsedBeforePause=0, lastActivityAt=0, interval=null, text="", typed="";
+
+ let clockNow=()=>performance.now();
+function readStorage(key,fallback){try{const value=localStorage.getItem(key);return value===null?fallback:value}catch(e){return fallback}}
+function readJSONStorage(key,fallback){try{const value=localStorage.getItem(key);return value===null?fallback:JSON.parse(value)}catch(e){return fallback}}
+function writeStorage(key,value){try{localStorage.setItem(key,typeof value==="string"?value:JSON.stringify(value));return true}catch(e){return false}}
+let savedHistory=readJSONStorage("keystreak-history",[]);
+let history=Array.isArray(savedHistory)?savedHistory.filter(item=>item&&Number.isFinite(Number(item.wpm))&&Number.isFinite(Number(item.acc))):[];
+let timelineData=[], keystrokes=0, fixes=0, lastSnapshotSecond=-1;
+let bestValue=Number(readStorage("keystreak-best","0")), runsValue=Number(readStorage("keystreak-runs","0"));
+let best=Number.isFinite(bestValue)&&bestValue>=0?bestValue:0, runs=Number.isFinite(runsValue)&&runsValue>=0?runsValue:0;
+function makeText(){
+  let source;
+  if(kind==="quotes") source=quoteBank[Math.floor(Math.random()*quoteBank.length)];
+  else if(kind==="gk") source=gkBank[Math.floor(Math.random()*gkBank.length)];
+  else if(kind==="gsncert") source=gsNcertBank[Math.floor(Math.random()*gsNcertBank.length)];
+  else source=Array.from({length:100},()=>wordBank[Math.floor(Math.random()*wordBank.length)]).join(" ");
+  return source;
+}
+function renderText(){
+ wordsEl.innerHTML="";
+ [...text].forEach((ch,i)=>{const s=document.createElement("span");s.className="char"+(ch===" "?" space":"");s.textContent=ch; s.dataset.i=i;wordsEl.appendChild(s)});
+ updateChars();
+}
+function updateChars(){
+ const chars=wordsEl.querySelectorAll(".char");
+ chars.forEach((el,i)=>{el.classList.remove("correct","incorrect","current");if(i<typed.length){el.classList.add(typed[i]===text[i]?"correct":"incorrect")}});
+ const cur=chars[Math.min(typed.length,chars.length-1)];
+ if(cur&&!finished)cur.classList.add("current");
+ // Keep the active typing line visible as the caret advances through wrapped lines.
+ // Display-only scrolling: typed text and test state are unchanged.
+ keepCurrentLineVisible(cur);
+}
+function keepCurrentLineVisible(cur){
+ if(!cur||finished)return;
+ const container=wordsEl;
+ const lineHeight=parseFloat(getComputedStyle(container).lineHeight)||37;
+ const containerRect=container.getBoundingClientRect();
+ const currentRect=cur.getBoundingClientRect();
+ const relativeTop=currentRect.top-containerRect.top;
+ const visibleHeight=container.clientHeight;
+ if(relativeTop+lineHeight>visibleHeight){
+  container.scrollTop+=Math.max(lineHeight,relativeTop+lineHeight-visibleHeight);
+ }else if(relativeTop<0){
+  container.scrollTop=Math.max(0,container.scrollTop+relativeTop);
+ }
+}
+function reset(){
+ exitFocusMode();
+ document.querySelectorAll("[data-kind]").forEach(btn=>btn.classList.toggle("active",btn.dataset.kind===kind));
+ clearInterval(interval);started=false;finished=false;paused=false;startAt=0;elapsedBeforePause=0;lastActivityAt=0;typed="";keystrokes=0;fixes=0;timelineData=[];lastSnapshotSecond=-1;text=makeText();input.value="";input.disabled=false;
+ $("result").classList.remove("show");document.body.classList.remove("result-open");$("timeStat").innerHTML=duration+'<span class="unit">sec</span>';
+ $("wpmStat").innerHTML='0<span class="unit">wpm</span>';$("accuracyStat").innerHTML='100<span class="unit">%</span>';$("errorsStat").textContent='0';
+ $("hint").textContent="Select Start typing when you are ready. The timer begins immediately.";$("startBtn").textContent="Start typing";
+ renderText();wordsEl.scrollTop=0;input.focus({preventScroll:true});
+}
+function metrics(){
+ const elapsed=elapsedBeforePause+(started&&startAt?Math.max((clockNow()-startAt)/1000,0):0);
+ const correct=typed.split("").reduce((n,c,i)=>n+(c===text[i]?1:0),0);
+ const errors=typed.length-correct, mins=Math.max(elapsed/60,1/60);
+ // Gross WPM = characters typed / (5 × elapsed time in minutes).
+ const raw=Math.round(typed.length/(5*mins));
+ // Preserve the existing accuracy-adjusted net WPM calculation.
+ const wpm=Math.round((correct/5)/mins);
+ const acc=typed.length?Math.round(correct/typed.length*100):100;
+ return {elapsed,correct,errors,raw,wpm,acc};
+}
+function updateStats(){
+ const m=metrics(), remain=Math.max(0,Math.ceil(duration-m.elapsed));
+ $("timeStat").innerHTML=remain+'<span class="unit">sec</span>';
+ $("wpmStat").innerHTML=m.wpm+'<span class="unit">wpm</span>';
+ $("accuracyStat").innerHTML=m.acc+'<span class="unit">%</span>';$("errorsStat").textContent=m.errors;
+
+}
+function begin(){
+ if(started||finished)return;
+ paused=false;started=true;startAt=clockNow();lastActivityAt=clockNow();input.disabled=false;
+ $("hint").textContent="Keep going — accuracy first, speed follows. The test pauses after 10 seconds of inactivity.";
+ $("startBtn").textContent="Test in progress";
+ clearInterval(interval);
+ interval=setInterval(()=>{
+  const now=clockNow();
+  if(now-lastActivityAt>=10000){pauseTest();return;}
+  updateStats();recordSnapshot();
+  if(metrics().elapsed>=duration)finish();
+ },100);
+}
+function pauseTest(){
+ if(!started||finished)return;
+ elapsedBeforePause+=Math.max(0,(clockNow()-startAt)/1000);
+ started=false;paused=true;clearInterval(interval);interval=null;input.disabled=true;
+ updateStats();
+ $("hint").textContent="Test paused after 10 seconds of inactivity. Select Resume test to continue from where you left off.";
+ $("startBtn").textContent="Resume test";
+}
+function consistencyScore(){
+  if(timelineData.length<2)return 100;
+  const values=timelineData.map(p=>p.wpm), mean=values.reduce((a,b)=>a+b,0)/values.length;
+  if(!mean)return 100;
+  const variance=values.reduce((sum,n)=>sum+(n-mean)**2,0)/values.length;
+  return Math.max(0,Math.min(100,Math.round(100-(Math.sqrt(variance)/mean)*100)));
+}
+function recordSnapshot(){
+  if(!started||!startAt)return;
+  const elapsed=Math.max(1,Math.floor(metrics().elapsed));
+  if(elapsed===lastSnapshotSecond)return;
+  lastSnapshotSecond=elapsed;
+  const m=metrics(), mins=Math.max(elapsed/60,1/60);
+  timelineData.push({time:elapsed,wpm:Math.max(0,Math.round((m.correct/5)/mins)),raw:Math.max(0,Math.round(typed.length/(5*mins)))});
+}
+function renderPerformanceChart(){
+  const svg=$("performanceChart"); if(!svg)return;
+  const data=timelineData.slice();
+  if(!data.length){svg.innerHTML='';return;}
+  const width=700,height=180,pad=30,maxWpm=Math.max(20,...data.map(p=>Math.max(p.wpm,p.raw)))+5,maxTime=Math.max(1,data[data.length-1].time);
+  const x=t=>pad+(t/maxTime)*(width-pad*2), y=v=>height-pad-(v/maxWpm)*(height-pad*2);
+  const path=key=>data.map((p,i)=>(i?'L':'M')+' '+x(p.time).toFixed(2)+' '+y(p[key]).toFixed(2)).join(' ');
+  svg.innerHTML=`<line x1="${pad}" y1="${y(0)}" x2="${width-pad}" y2="${y(0)}" class="chart-grid-line"/><line x1="${pad}" y1="${y(maxWpm/2)}" x2="${width-pad}" y2="${y(maxWpm/2)}" class="chart-grid-line"/><line x1="${pad}" y1="${y(maxWpm)}" x2="${width-pad}" y2="${y(maxWpm)}" class="chart-grid-line"/><text x="3" y="${y(maxWpm)+4}" class="chart-axis">${Math.round(maxWpm)}</text><text x="3" y="${y(maxWpm/2)+4}" class="chart-axis">${Math.round(maxWpm/2)}</text><text x="12" y="${y(0)+4}" class="chart-axis">0</text><path d="${path('raw')}" class="chart-raw"/><path d="${path('wpm')}" class="chart-net"/>`;
+}
+function finish(manual=false){
+  if(finished)return;
+  exitFocusMode();
+  // Capture the final timeline point before marking the session as stopped.
+  if(started)recordSnapshot();
+  const m=metrics();
+  finished=true;started=false;paused=false;clearInterval(interval);interval=null;input.disabled=true;
+  const remaining=Math.max(0,Math.ceil(duration-m.elapsed));
+  $("timeStat").innerHTML=(manual?remaining:0)+'<span class="unit">sec</span>';
+  $("resultTitle").textContent=m.wpm>=60?"Excellent rhythm.":m.wpm>=35?"Nice run.":"Good start.";
+  $("resultSub").textContent=manual?`Session submitted after ${Math.round(m.elapsed)} seconds. You can review your progress below.`:`You typed for ${Math.min(duration,Math.round(m.elapsed))} seconds. Consistency is the real win.`;
+  $("finalWpm").textContent=m.wpm;$("finalAcc").textContent=m.acc+"%";$("finalRaw").textContent=m.raw;$("finalErrors").textContent=m.errors;
+  $("finalConsistency").textContent=consistencyScore()+"%";$("finalKeystrokes").textContent=keystrokes;$("finalCorrect").textContent=m.correct;$("finalFixes").textContent=fixes;renderPerformanceChart();
+  $("result").classList.add("show");document.body.classList.add("result-open");
+  $("hint").textContent=manual?"Results submitted. Ready for another?":"Run complete. Ready for another?";
+  $("startBtn").textContent=manual?"Session submitted":"Run complete";
+  runs++;best=Math.max(best,m.wpm);history.unshift({wpm:m.wpm,acc:m.acc,date:Date.now()});history=history.slice(0,5);
+  writeStorage("keystreak-history",history);writeStorage("keystreak-best",String(best));writeStorage("keystreak-runs",String(runs));updateDashboard();
+}
+function updateDashboard(){
+
+ $("history").innerHTML="";$("historyEmpty").style.display=history.length?"none":"block";
+ $("recentCount").textContent=history.length+" saved";
+ history.slice(0,5).reverse().forEach((item)=>{const wrap=document.createElement("div");wrap.className="bar-wrap";const bar=document.createElement("div");bar.className="bar";bar.style.height=Math.max(4,Math.min(48,Number(item.wpm)/100*48))+"px";bar.title=item.wpm+" WPM · "+item.acc+"% accuracy";const label=document.createElement("div");label.className="bar-label";label.textContent=item.wpm;wrap.append(bar,label);$("history").append(wrap)});
+ const recent=$("recentSessionsList");recent.replaceChildren();
+ history.slice(0,5).forEach(item=>{
+  const row=document.createElement("div");row.className="recent-session-row";
+  const main=document.createElement("div");main.className="recent-session-main";
+  const speed=document.createElement("strong");speed.textContent=Number(item.wpm)+" WPM";
+  const detail=document.createElement("span");detail.textContent=(Number(item.acc)||0)+"% accuracy";main.append(speed,detail);
+  const meta=document.createElement("div");meta.className="recent-session-meta";
+  const date=Number(item.date);meta.textContent=Number.isFinite(date)&&date>0?new Date(date).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"Saved session";
+  row.append(main,meta);recent.append(row);
+ });
+
+}
+input.addEventListener("input",()=>{
+ if(finished)return;
+ if(paused||input.disabled)return;
+  if(!started && input.value.length)begin();
+  if(input.value.length>0)enterFocusMode();
+ let next=input.value;
+ if(next.length>text.length)next=next.slice(0,text.length);
+ if(input.value!==next)input.value=next;
+ const previousLength=typed.length;
+ if(next!==typed)lastActivityAt=clockNow();
+ if(next.length>previousLength)keystrokes+=next.length-previousLength;
+ else if(next.length<previousLength)fixes+=previousLength-next.length;
+ typed=next;
+ // Add the next passage before the current one runs out. This avoids the
+ // off-by-one gap that occurred when a new passage was appended at completion.
+ if(started && !finished && text.length-typed.length<=25 && metrics().elapsed<duration){
+   text += " " + makeText();
+   renderText();
+ }
+ updateChars();updateStats();
+ if(typed.length>=text.length)finish();
+});
+area.addEventListener("click",()=>input.focus());
+$("startBtn").addEventListener("click",()=>{if(finished)reset();if(!started&&!finished)begin();input.focus()});
+$("restartBtn").addEventListener("click",reset);$("againBtn").addEventListener("click",()=>{reset();});
+ $("exitFocusBtn").addEventListener("click",exitFocusMode);
+$("submitBtn").addEventListener("click",()=>{if(!finished)finish(true)});
+$("closeResultBtn").addEventListener("click",()=>{$("result").classList.remove("show");document.body.classList.remove("result-open")});
+document.querySelectorAll("[data-time]").forEach(btn=>btn.addEventListener("click",()=>{duration=Number(btn.dataset.time);document.querySelectorAll("[data-time]").forEach(b=>b.classList.toggle("active",b===btn));reset()}));
+document.querySelectorAll("[data-kind]").forEach(btn=>btn.addEventListener("click",()=>{
+ const nextKind=btn.dataset.kind;
+ if(kind===nextKind)return;
+ kind=nextKind;
+ document.querySelectorAll("[data-kind]").forEach(b=>b.classList.toggle("active",b===btn));
+ reset();
+}));
+
+$("newPassageBtn").addEventListener("click",reset);
+$("themeToggle").addEventListener("click",()=>{
+  const dark=document.body.classList.toggle("dark-theme");
+  $("themeToggle").textContent=dark?"White Theme":"Dark Theme";
+  writeStorage("true-typing-theme",dark?"dark":"white");
+ });
+document.addEventListener("keydown",e=>{
+  // Resume an inactivity-paused test with the same printable key that triggered it.
+  if(paused&&!finished&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&
+     (e.key===" "||(e.key.length===1&&/^[a-z]$/i.test(e.key)))){
+    e.preventDefault();
+    input.disabled=false;
+    input.focus({preventScroll:true});
+    begin();
+    input.value=typed+e.key;
+    input.dispatchEvent(new Event("input",{bubbles:true}));
+    return;
+  }
+
+  // Enter on the results screen is equivalent to clicking Try Again,
+  // including after a manually submitted, incomplete test.
+  if(e.key==="Enter"){
+   if(finished&&$("result").classList.contains("show")){
+    e.preventDefault();
+    reset();
+   }else if(e.target===input){
+    e.preventDefault();
+   }
+  }
+});
+try{
+  const savedTheme=localStorage.getItem("true-typing-theme");
+  // White is the default for first-time visitors; preserve an explicitly saved dark preference.
+  const useDark=savedTheme==="dark";
+  document.body.classList.toggle("dark-theme",useDark);
+  $("themeToggle").textContent=useDark?"White Theme":"Dark Theme";
+  if(savedTheme===null||savedTheme!=="dark"&&savedTheme!=="white"){
+    localStorage.setItem("true-typing-theme","white");
+  }
+ }catch(e){
+  // If storage is unavailable, render the white theme as the default.
+  document.body.classList.remove("dark-theme");
+  $("themeToggle").textContent="Dark Theme";
+ }
+$("clearHistoryBtn").addEventListener("click",()=>{
+ if(!history.length)return;
+ if(!window.confirm("Clear all recent session history saved in this browser?"))return;
+ history=[];writeStorage("keystreak-history",history);updateDashboard();
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"&&document.body.classList.contains("distraction-free")&&!$("result").classList.contains("show")){exitFocusMode();return;}
+ if(e.key==="Escape"&&$("result").classList.contains("show")){$("result").classList.remove("show");document.body.classList.remove("result-open")}
+});
+document.addEventListener("click",e=>{
+ if(document.body.classList.contains("result-open")&&e.target===document.body){$("result").classList.remove("show");document.body.classList.remove("result-open")}
+});
+
+const infoModal=$("infoModal");
+const popupTitles={
+ "recent-sessions":"Your Recent Sessions",
+ "typing-guide":"How to improve typing speed and accuracy",
+ "about":"About IQTyping",
+ "contact":"Contact",
+ "privacy":"Privacy Policy",
+ "terms":"Terms of Use"
+};
+let lastPopupTrigger=null;
+function openInfoPopup(panelName,trigger){
+ const panel=infoModal.querySelector('[data-popup-panel="'+panelName+'"]');
+ if(!panel)return;
+ lastPopupTrigger=trigger||document.activeElement;
+ infoModal.querySelectorAll(".info-panel").forEach(p=>p.classList.toggle("active",p===panel));
+ $("infoModalTitle").textContent=popupTitles[panelName]||"IQTyping";
+ infoModal.classList.add("show");
+ infoModal.setAttribute("aria-hidden","false");
+ document.body.classList.add("info-open");
+ $("closeInfoModal").focus();
+}
+function closeInfoPopup(){
+ if(!infoModal.classList.contains("show"))return;
+ infoModal.classList.remove("show");
+ infoModal.setAttribute("aria-hidden","true");
+ document.body.classList.remove("info-open");
+ if(lastPopupTrigger&&typeof lastPopupTrigger.focus==="function")lastPopupTrigger.focus();
+}
+document.addEventListener("click",e=>{
+ const trigger=e.target.closest("[data-popup]");
+ if(trigger){
+  e.preventDefault();
+  openInfoPopup(trigger.dataset.popup,trigger);
+  return;
+ }
+});
+$("closeInfoModal").addEventListener("click",closeInfoPopup);
+infoModal.addEventListener("click",e=>{if(e.target===infoModal)closeInfoPopup()});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"&&infoModal.classList.contains("show"))closeInfoPopup();
+});
+updateDashboard();reset();
+})();
+</script>
+</body>
+</html>
