@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://iqtyping.com/</loc>
   </url>
+
+  <url>
+    <loc>https://iqtyping.com/typing-test.html</loc>
+  </url>
+
+  <url>
+    <loc>https://iqtyping.com/typing-practice.html</loc>
+  </url>
+
+  <url>
+    <loc>https://iqtyping.com/typing-speed-test.html</loc>
+  </url>
+
+  <url>
+    <loc>https://iqtyping.com/typing-tips.html</loc>
+  </url>
+
 </urlset>
