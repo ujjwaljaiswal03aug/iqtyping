@@ -16,7 +16,8 @@
   "@type": "WebSite",
   "name": "IQTyping",
   "alternateName": "iqtyping.com",
-  "url": "https://iqtyping.com/"
+  "url": "https://iqtyping.com/",
+   "image": "https://iqtyping.com/iq-logo.png"
 }
 </script>
   <meta name="google-site-verification" content="IEatH_HkrpVMTM_DJhoafs0OKPBtEPUZTfYQrJfplmE" />
@@ -28,6 +29,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="IQTyping – Online Typing Test &amp; Practice">
 <meta name="twitter:description" content="Practice typing, track WPM and accuracy, and build consistency with IQTyping.">
+<link rel="icon" type="image/png" sizes="512x512" href="/iq-favicon.png">
+<link rel="apple-touch-icon" href="/iq-favicon.png">
+<meta property="og:image" content="https://iqtyping.com/iq-logo.png">
+<meta property="og:image:alt" content="IQTyping blue pen and brain logo">
+<meta property="og:image:type" content="image/png">
+<meta name="twitter:image" content="https://iqtyping.com/iq-logo.png">
+<meta name="twitter:image:alt" content="IQTyping blue pen and brain logo">
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -333,12 +341,14 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
 
 
 
+.brand-logo{display:block;width:48px;height:40px;object-fit:contain;flex:0 0 auto}
+@media(max-width:380px){.brand-logo{width:42px;height:36px}}
 </style>
 </head>
 <body>
 <div class="shell">
 <header>
-  <div class="brand"><div class="mark">IQ</div><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
+  <div class="brand"><img class="brand-logo" src="/iq-logo.png" alt="IQTyping logo: blue pen and brain" width="48" height="40" decoding="async"><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
   <nav class="site-nav" aria-label="Main navigation"><a href="#recent-sessions" data-popup="recent-sessions">Your Recent Sessions</a></nav><div class="header-right"><button class="pill" id="themeToggle" type="button">Dark Theme</button></div>
 </header>
 <main id="typing-lab">
