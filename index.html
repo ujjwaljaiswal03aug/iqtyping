@@ -1342,5 +1342,44 @@ document.addEventListener("keydown",e=>{
 updateDashboard();reset();
 })();
 </script>
+
+<script>
+/*
+ * IQTyping: discourage casual source inspection.
+ * This is a browser-side deterrent only; it cannot secure client-side code.
+ * Normal typing, form editing, Tab navigation, and application shortcuts remain available.
+ */
+(() => {
+  "use strict";
+
+  // Suppress the standard page context menu.
+  document.addEventListener("contextmenu", event => {
+    event.preventDefault();
+  }, true);
+
+  // Intercept common DevTools and View Source shortcuts without changing
+  // the typing application's own keyboard/input event handlers.
+  document.addEventListener("keydown", event => {
+    const key = String(event.key || "").toLowerCase();
+    const ctrlOrMeta = event.ctrlKey || event.metaKey;
+
+    const blockedShortcut =
+      key === "f12" ||
+      (ctrlOrMeta && event.shiftKey && ["i", "j", "c"].includes(key)) ||
+      (ctrlOrMeta && !event.shiftKey && key === "u") ||
+      // Common macOS DevTools shortcut.
+      (event.metaKey && event.altKey && key === "i");
+
+    if (blockedShortcut) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
