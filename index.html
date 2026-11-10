@@ -347,14 +347,12 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
 
 
 
-.brand-logo{display:block;width:48px;height:40px;object-fit:contain;flex:0 0 auto}
-@media(max-width:380px){.brand-logo{width:42px;height:36px}}
 </style>
 </head>
 <body>
 <div class="shell">
 <header>
-  <div class="brand"><img class="brand-logo" src="/iq-logo.png" alt="IQTyping logo: blue pen and brain" width="48" height="40" decoding="async"><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
+  <div class="brand"><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
   <nav class="site-nav" aria-label="Main navigation"><a href="#recent-sessions" data-popup="recent-sessions">Your Recent Sessions</a></nav><div class="header-right"><button class="pill" id="themeToggle" type="button">Dark Theme</button></div>
 </header>
 <main id="typing-lab">
@@ -365,7 +363,7 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
     <span class="mode-label">Time</span>
     <button data-time="60" class="active">1 min</button><button data-time="120">2 min</button><button data-time="180">3 min</button><button data-time="300">5 min</button><button data-time="600">10 min</button>
     <span class="divider"></span><span class="mode-label">text</span>
-    <button data-kind="words">Practice</button><button data-kind="quotes" class="active">Motivational Quotes</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button>
+    <button data-kind="words">Practice</button><button data-kind="quotes" class="active">Motivational Quotes</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button><button data-kind="dailynews">Daily NEWS</button><button data-kind="currentaffairs">Current Affairs</button><button data-kind="exampractice">Exam Practice</button>
 <button id="newPassageBtn" title="Load another passage">↻ New passage</button>
   </div>
   <section class="test-card" aria-label="Typing test and performance results">
@@ -633,6 +631,27 @@ const gsNcertBank = [
 "the water cycle includes evaporation condensation and precipitation",
 "inflation refers to a sustained rise in the general price level",
 "the supreme court of india is the highest court in the indian judicial system"
+];
+
+const dailyNewsBank = [
+"Public transport systems help connect people with schools, workplaces, hospitals, and markets. Reliable buses and rail services can reduce traffic congestion and make daily travel more affordable.",
+"Local communities can improve public spaces by maintaining parks, protecting trees, reducing litter, and supporting responsible waste management. Public participation is important for sustainable development.",
+"Digital services are changing how citizens access information and complete everyday tasks. Safe internet habits, strong passwords, and awareness of online fraud help people use technology responsibly.",
+"Renewable energy projects use sources such as sunlight and wind to generate electricity. Expanding clean energy can support energy security and reduce dependence on fossil fuels."
+];
+
+const currentAffairsBank = [
+"India's democratic system includes elections, representative institutions, and constitutional responsibilities. Informed citizens can participate more effectively by understanding public policies and important national issues.",
+"Climate action includes improving energy efficiency, protecting forests, managing water resources, and preparing communities for extreme weather. Cooperation among governments, businesses, and citizens is essential.",
+"Financial inclusion aims to make useful and affordable financial services available to individuals and businesses. Bank accounts, digital payments, savings, and responsible credit can support economic participation.",
+"Scientific research and innovation contribute to progress in healthcare, agriculture, communication, transport, and environmental protection. Strong education and research institutions help develop future technologies."
+];
+
+const examPracticeBank = [
+"Read each question carefully and identify exactly what is being asked. Eliminate options that contradict the given information, check units, and verify the final answer before moving to the next question.",
+"Effective examination preparation requires a clear timetable, regular revision, and consistent problem solving. Analyse mistakes after every practice test and revise the concepts that caused those errors.",
+"In computer science, an algorithm is a finite sequence of well-defined steps used to solve a problem. A good algorithm should be correct, clear, and efficient in its use of time and memory.",
+"Time management is an important examination skill. Begin with questions you can solve confidently, avoid spending too long on one problem, and reserve time to review marked questions."
 ];
 
 const quoteBank = [
@@ -1043,6 +1062,9 @@ function makeText(){
   if(kind==="quotes") source=quoteBank[Math.floor(Math.random()*quoteBank.length)];
   else if(kind==="gk") source=gkBank[Math.floor(Math.random()*gkBank.length)];
   else if(kind==="gsncert") source=gsNcertBank[Math.floor(Math.random()*gsNcertBank.length)];
+  else if(kind==="dailynews") source=dailyNewsBank[Math.floor(Math.random()*dailyNewsBank.length)];
+  else if(kind==="currentaffairs") source=currentAffairsBank[Math.floor(Math.random()*currentAffairsBank.length)];
+  else if(kind==="exampractice") source=examPracticeBank[Math.floor(Math.random()*examPracticeBank.length)];
   else source=Array.from({length:100},()=>wordBank[Math.floor(Math.random()*wordBank.length)]).join(" ");
   return source;
 }
