@@ -352,12 +352,12 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
 <body>
 <div class="shell">
 <header>
-  <div class="brand"><span>IQ Typing<small>Transforming the Typing Industry</small></span></div>
+  <div class="brand"><span>IQTyping<small>Transforming the Typing Industry</small></span></div>
   <nav class="site-nav" aria-label="Main navigation"><a href="#recent-sessions" data-popup="recent-sessions">Your Recent Sessions</a></nav><div class="header-right"><button class="pill" id="themeToggle" type="button">Dark Theme</button></div>
 </header>
 <main id="typing-lab">
   <section class="intro">
-    <div><h1>Make every keystroke count <br> with IQ Typing.</h1></div>
+    <div><h1>Make every keystroke<br>count.</h1></div>
   </section>
   <div class="modebar" role="group" aria-label="Typing test settings">
     <span class="mode-label">Time</span>
@@ -1342,5 +1342,44 @@ document.addEventListener("keydown",e=>{
 updateDashboard();reset();
 })();
 </script>
+
+<script>
+/*
+ * IQTyping: discourage casual source inspection.
+ * This is a browser-side deterrent only; it cannot secure client-side code.
+ * Normal typing, form editing, Tab navigation, and application shortcuts remain available.
+ */
+(() => {
+  "use strict";
+
+  // Suppress the standard page context menu.
+  document.addEventListener("contextmenu", event => {
+    event.preventDefault();
+  }, true);
+
+  // Intercept common DevTools and View Source shortcuts without changing
+  // the typing application's own keyboard/input event handlers.
+  document.addEventListener("keydown", event => {
+    const key = String(event.key || "").toLowerCase();
+    const ctrlOrMeta = event.ctrlKey || event.metaKey;
+
+    const blockedShortcut =
+      key === "f12" ||
+      (ctrlOrMeta && event.shiftKey && ["i", "j", "c"].includes(key)) ||
+      (ctrlOrMeta && !event.shiftKey && key === "u") ||
+      // Common macOS DevTools shortcut.
+      (event.metaKey && event.altKey && key === "i");
+
+    if (blockedShortcut) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (typeof event.stopImmediatePropagation === "function") {
+        event.stopImmediatePropagation();
+      }
+    }
+  }, true);
+})();
+</script>
+
 </body>
 </html>
