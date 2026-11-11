@@ -1229,33 +1229,30 @@ if(["full","word","disabled"].includes(savedBackspaceMode)){
  backspaceMode=savedBackspaceMode;
  backspaceControl.value=backspaceMode;
 }
+// Backspace rules apply only to the typing field. Never erase a whole word
+// or line on a single Backspace press.
 document.addEventListener("keydown",event=>{
  if(event.key!=="Backspace"||event.target!==input)return;
  if(backspaceMode==="disabled"){
   event.preventDefault();
   return;
  }
- if(backspaceMode!=="word")return;
- event.preventDefault();
- if(input.disabled||finished||paused)return;
- const start=input.selectionStart??input.value.length;
- const end=input.selectionEnd??start;
- let nextValue=input.value;
- let nextCaret=start;
- if(start!==end){
-  nextValue=nextValue.slice(0,start)+nextValue.slice(end);
- }else if(start>0){
-  // Remove the preceding word and any whitespace immediately before it,
-  // matching the usual Ctrl+Backspace editing behaviour.
-  let cutStart=start;
-  while(cutStart>0&&/\\s/.test(nextValue.charAt(cutStart-1)))cutStart--;
-  while(cutStart>0&&!/\\s/.test(nextValue.charAt(cutStart-1)))cutStart--;
-  nextValue=nextValue.slice(0,cutStart)+nextValue.slice(start);
-  nextCaret=cutStart;
+ if(backspaceMode==="full")return; // Browser deletes one character normally.
+ // One-Word mode: corrections are limited to the word being typed.
+ // Keep deletion character-by-character; do not jump to earlier words.
+ const caret=input.selectionStart??input.value.length;
+ const selectionEnd=input.selectionEnd??caret;
+ const wordStart=input.value.lastIndexOf(" ",Math.max(0,caret-1))+1;
+ if(caret!==selectionEnd || caret<=wordStart){
+  event.preventDefault();
+  return;
  }
- input.value=nextValue;
- input.setSelectionRange(nextCaret,nextCaret);
- input.dispatchEvent(new Event("input",{bubbles:true}));
+ // Prevent Ctrl/Option+Backspace from deleting an entire word at once.
+ if(event.ctrlKey||event.altKey||event.metaKey){
+  event.preventDefault();
+  input.setRangeText("",caret-1,caret,"end");
+  input.dispatchEvent(new Event("input",{bubbles:true}));
+ }
 },true);
 
 input.addEventListener("input",()=>{
