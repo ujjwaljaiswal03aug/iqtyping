@@ -352,6 +352,24 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
 
 
 
+
+/* IQTyping social community section: placed after the typing test, before the footer. */
+.social-section{margin:28px 0 8px;padding:30px 26px;border:1px solid var(--line);border-radius:16px;background:var(--panel);text-align:center}
+.social-heading .eyebrow{margin-bottom:8px}
+.social-heading h2{margin:0;font:700 clamp(21px,3vw,27px)/1.25 "Poppins","DM Sans",sans-serif;letter-spacing:-.035em;color:var(--text)}
+.social-heading p{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+.social-links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin-top:22px}
+.social-link{display:flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:var(--panel2);color:var(--text);text-decoration:none;font-size:13px;font-weight:650;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.social-link:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 7px 18px rgba(29,55,83,.08)}
+.social-link svg{width:19px;height:19px;flex:0 0 19px;fill:currentColor}
+.social-link .social-arrow{font-size:12px;color:var(--muted);margin-left:auto}
+.social-telegram svg{color:#229ED9}.social-x svg{color:var(--text)}.social-instagram svg{color:#D9468D}.social-facebook svg{color:#1877F2}.social-youtube svg{color:#FF0033}
+body.dark-theme .social-section{background:var(--panel);border-color:var(--line)}
+body.dark-theme .social-link{background:var(--panel2);border-color:var(--line);color:var(--text)}
+@media(max-width:760px){.social-links{grid-template-columns:repeat(2,minmax(0,1fr))}.social-link:last-child{grid-column:1/-1}}
+@media(max-width:420px){.social-section{padding:23px 15px}.social-links{gap:8px}.social-link{justify-content:flex-start;padding:10px;font-size:12px;gap:7px}.social-link svg{width:17px;height:17px;flex-basis:17px}}
+@media(prefers-reduced-motion:reduce){.social-link{transition:none}}
+
 </style>
 </head>
 <body>
@@ -417,6 +435,37 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
       </div>
     </div>
   </section>
+
+  <section class="social-section" aria-labelledby="socialTitle">
+    <div class="social-heading">
+      <div class="eyebrow">Join the IQTyping community</div>
+      <h2 id="socialTitle">Stay Connected with IQ Typing</h2>
+      <p>Follow us for typing tips, practice updates, learning resources, and more.</p>
+    </div>
+    <div class="social-links" aria-label="IQTyping social media accounts">
+      <a class="social-link social-telegram" href="https://t.me/iqtyping" target="_blank" rel="noopener noreferrer" aria-label="Follow IQTyping on Telegram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 4.2 18.4 19c-.24 1.05-.86 1.31-1.74.82l-4.8-3.54-2.32 2.24c-.26.26-.48.48-.98.48l.35-4.9 8.92-8.06c.39-.35-.09-.54-.6-.19L6.2 12.8l-4.7-1.47c-1.02-.32-1.04-1.02.21-1.51L20.1 2.7c.85-.31 1.6.21 1.5 1.5Z"/></svg>
+        <span>Telegram</span><span class="social-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link social-x" href="https://x.com/Ujjwaljaiswal03" target="_blank" rel="noopener noreferrer" aria-label="Follow IQTyping on X">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.78 7.75L23.2 22h-6.25l-4.9-8.02L5.03 22H1.9l7.25-8.29L1.4 2h6.4l4.43 7.37L18.9 2Zm-1.1 18h1.73L6.88 3.9H5.02L17.8 20Z"/></svg>
+        <span> X </span><span class="social-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link social-instagram" href="https://www.instagram.com/iqtyping?mdxt=MW53aDZ6ZGFudHdweA==" target="_blank" rel="noopener noreferrer" aria-label="Follow IQTyping on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6.5" r="1.2"/></svg>
+        <span>Instagram</span><span class="social-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link social-facebook" href="https://www.facebook.com/share/1GmLh1KDgw/" target="_blank" rel="noopener noreferrer" aria-label="Follow IQTyping on Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4Z"/></svg>
+        <span>Facebook</span><span class="social-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="social-link social-youtube" href="https://youtube.com/@iqtyping?si=aNhY5IsEP7rQqO36" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to IQTyping on YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+        <span>YouTube</span><span class="social-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
 
 </main>
 <div class="info-modal" id="infoModal" aria-hidden="true">
