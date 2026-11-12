@@ -354,7 +354,9 @@ h1, .content-card h2, .content-card h3, .result h2, .info-modal-head h2 {
 
 
 /* IQTyping social community section: placed after the typing test, before the footer. */
-.social-section{margin:28px 0 8px;padding:30px 26px;border:1px solid var(--line);border-radius:16px;background:var(--panel);text-align:center}
+.social-section{margin:64px 0 8px;padding:30px 26px;border:1px solid var(--line);border-radius:16px;background:var(--panel);text-align:center}
+/* Keep community links out of the way during an active typing session. */
+.social-section.is-hidden-during-test{display:none}
 .social-heading .eyebrow{margin-bottom:8px}
 .social-heading h2{margin:0;font:700 clamp(21px,3vw,27px)/1.25 "Poppins","DM Sans",sans-serif;letter-spacing:-.035em;color:var(--text)}
 .social-heading p{margin:9px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
@@ -369,6 +371,19 @@ body.dark-theme .social-link{background:var(--panel2);border-color:var(--line);c
 @media(max-width:760px){.social-links{grid-template-columns:repeat(2,minmax(0,1fr))}.social-link:last-child{grid-column:1/-1}}
 @media(max-width:420px){.social-section{padding:23px 15px}.social-links{gap:8px}.social-link{justify-content:flex-start;padding:10px;font-size:12px;gap:7px}.social-link svg{width:17px;height:17px;flex-basis:17px}}
 @media(prefers-reduced-motion:reduce){.social-link{transition:none}}
+
+
+/* Practice dropdown: keeps the existing mode-bar layout and visual language. */
+.practice-dropdown{position:relative;display:inline-flex;align-items:center}
+.practice-dropdown>#practiceDropdownToggle{background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:9px 13px;font-size:12px}
+.practice-dropdown>#practiceDropdownToggle:hover,.practice-dropdown>#practiceDropdownToggle[aria-expanded="true"]{color:var(--accent);border-color:var(--accent)}
+.practice-menu{position:absolute;z-index:80;top:calc(100% + 7px);left:0;width:210px;max-height:min(70vh,420px);overflow:auto;padding:8px;background:var(--panel);border:1px solid var(--line);border-radius:11px;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.practice-menu[hidden]{display:none}
+.practice-menu .practice-menu-label{padding:7px 9px 5px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.practice-menu button{display:block;width:100%;padding:9px;text-align:left;border:0;border-radius:7px;background:transparent;color:var(--text);font-size:12px}
+.practice-menu button:hover,.practice-menu button.selected{background:var(--panel2);color:var(--accent)}
+body.dark-theme .practice-menu{background:var(--panel);border-color:var(--line)}
+@media(max-width:650px){.practice-menu{left:0;width:205px}}
 
 </style>
 </head>
@@ -393,7 +408,16 @@ body.dark-theme .social-link{background:var(--panel2);border-color:var(--line);c
     </select>
     <div class="modebar-text-row">
       <span class="divider"></span><span class="mode-label">Text</span>
-      <button data-kind="words">Practice</button><button data-kind="quotes" class="active">Motivational Quotes</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button><button data-kind="dailynews">Daily NEWS</button><button data-kind="currentaffairs">Current Affairs</button><button data-kind="exampractice">Exam Practice</button>
+      <div class="practice-dropdown" id="practiceDropdown">
+        <button type="button" id="practiceDropdownToggle" aria-haspopup="true" aria-expanded="false">Practice <span aria-hidden="true">▾</span></button>
+        <div class="practice-menu" id="practiceMenu" hidden>
+          <div class="practice-menu-label">Practice row</div>
+          <button type="button" data-practice-row="home">Home Row Practice</button>
+          <button type="button" data-practice-row="upper">Upper Row Practice</button>
+          <button type="button" data-practice-row="bottom">Bottom Row Practice</button>
+          <button type="button" data-practice-row="all">All Rows Practice</button>
+        </div>
+      </div><button data-kind="quotes" class="active">Motivational Quotes</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button><button data-kind="dailynews">Daily NEWS</button><button data-kind="currentaffairs">Current Affairs</button><button data-kind="exampractice">Exam Practice</button>
       <button id="newPassageBtn" title="Load another passage">↻ New passage</button>
     </div>
   </div>
@@ -435,7 +459,7 @@ body.dark-theme .social-link{background:var(--panel2);border-color:var(--line);c
     </div>
   </section>
 
-  <section class="social-section" aria-labelledby="socialTitle">
+  <section class="social-section" id="socialSection" aria-labelledby="socialTitle">
     <div class="social-heading">
       <div class="eyebrow">Join the IQTyping community</div>
       <h2 id="socialTitle">Stay Connected with IQ Typing</h2>
@@ -1108,7 +1132,7 @@ const input=$("typingInput"), wordsEl=$("words"), area=$("typingArea");
  function exitFocusMode(){
   document.body.classList.remove("distraction-free");
  }
-let duration=60, kind="quotes", started=false, finished=false, paused=false, startAt=0, elapsedBeforePause=0, lastActivityAt=0, interval=null, text="", typed="";
+let duration=60, kind="quotes", practiceRow="all", started=false, finished=false, paused=false, startAt=0, elapsedBeforePause=0, lastActivityAt=0, interval=null, text="", typed="";
 
  let clockNow=()=>performance.now();
 function readStorage(key,fallback){try{const value=localStorage.getItem(key);return value===null?fallback:value}catch(e){return fallback}}
@@ -1119,6 +1143,42 @@ let history=Array.isArray(savedHistory)?savedHistory.filter(item=>item&&Number.i
 let timelineData=[], keystrokes=0, fixes=0, lastSnapshotSecond=-1;
 let bestValue=Number(readStorage("keystreak-best","0")), runsValue=Number(readStorage("keystreak-runs","0"));
 let best=Number.isFinite(bestValue)&&bestValue>=0?bestValue:0, runs=Number.isFinite(runsValue)&&runsValue>=0?runsValue:0;
+const practiceRowLetters={home:"asdfghjkl",upper:"qwertyuiop",bottom:"zxcvbnm",all:"abcdefghijklmnopqrstuvwxyz"};
+const practiceWords={
+ home:["dad","sad","lad","fad","had","ask","all","ash","fall","hall","half","flask","flash","shall","salad","lass","dash","sash","hash","glad","flag","shall","lass","alas","adds","asks","falls","halls","flasks","shalls","salads","flails","alfalfa","dashfalls"],
+ upper:["we","it","to","wept","type","write","wrote","poet","power","quiet","quite","quote","queue","query","tire","wire","were","tier","riot","trip","port","rope","peer","pure","pour","your","yore","witty","pretty","report","writer","writer","proper","property","prototype","typewriter","priority","equity","query","quite"],
+ // The bottom row has very few common English words, so use short key-combination drills
+ // made only from Z, X, C, V, B, N and M.
+ bottom:["zx","xc","cv","vb","bn","nm","mz","zxc","xcv","cvb","vbn","bnm","nmz","zxm","cxv","vzn","bmx","ncz","zcvb","xvbn","cvnm","bnzx","mncv","xzbn"],
+ all:["the","and","for","you","are","with","that","this","have","from","your","type","learn","skill","quick","brown","jumps","focus","daily","practice","keyboard","accuracy","improve","consistent","development","excellent","challenge","performance"]
+};
+function practiceLengthAllowed(word){
+  // Beginner is the only practice level: short 2–4 character drills.
+  return word.length>=2&&word.length<=4;
+ }
+function makeRowPracticeText(){
+ const letters=practiceRowLetters[practiceRow]||practiceRowLetters.all;
+ const pattern=new RegExp("^["+letters+"]+$","i");
+ let candidates=(practiceWords[practiceRow]||practiceWords.all).filter(word=>pattern.test(word)&&practiceLengthAllowed(word));
+ // Keep every generated token strictly within the selected row and beginner length.
+ if(!candidates.length)candidates=(practiceWords[practiceRow]||practiceWords.all).filter(word=>pattern.test(word));
+ if(!candidates.length)candidates=[...letters];
+ return Array.from({length:100},()=>candidates[Math.floor(Math.random()*candidates.length)]).join(" ");
+}
+function updatePracticeMenuSelection(){
+ document.querySelectorAll("[data-practice-row]").forEach(btn=>btn.classList.toggle("selected",btn.dataset.practiceRow===practiceRow));
+}
+function activatePractice(){
+ kind="words";
+ updatePracticeMenuSelection();
+ document.querySelectorAll("[data-kind]").forEach(btn=>btn.classList.remove("active"));
+ closePracticeMenu();
+ reset();
+}
+function closePracticeMenu(){
+ const menu=$("practiceMenu"),toggle=$("practiceDropdownToggle");
+ if(menu&&toggle){menu.hidden=true;toggle.setAttribute("aria-expanded","false");}
+}
 function makeText(){
   let source;
   if(kind==="quotes") source=quoteBank[Math.floor(Math.random()*quoteBank.length)];
@@ -1127,7 +1187,7 @@ function makeText(){
   else if(kind==="dailynews") source=dailyNewsBank[Math.floor(Math.random()*dailyNewsBank.length)];
   else if(kind==="currentaffairs") source=currentAffairsBank[Math.floor(Math.random()*currentAffairsBank.length)];
   else if(kind==="exampractice") source=examPracticeBank[Math.floor(Math.random()*examPracticeBank.length)];
-  else source=Array.from({length:100},()=>wordBank[Math.floor(Math.random()*wordBank.length)]).join(" ");
+  else source=makeRowPracticeText();
   return source;
 }
 function renderText(){
@@ -1160,6 +1220,7 @@ function keepCurrentLineVisible(cur){
 }
 function reset(){
  exitFocusMode();
+ const socialSection=$("socialSection");if(socialSection)socialSection.classList.remove("is-hidden-during-test");
  document.querySelectorAll("[data-kind]").forEach(btn=>btn.classList.toggle("active",btn.dataset.kind===kind));
  clearInterval(interval);started=false;finished=false;paused=false;startAt=0;elapsedBeforePause=0;lastActivityAt=0;typed="";keystrokes=0;fixes=0;timelineData=[];lastSnapshotSecond=-1;text=makeText();input.value="";input.disabled=false;
  $("result").classList.remove("show");document.body.classList.remove("result-open");$("timeStat").innerHTML=duration+'<span class="unit">sec</span>';
@@ -1187,6 +1248,7 @@ function updateStats(){
 }
 function begin(){
  if(started||finished)return;
+ const socialSection=$("socialSection");if(socialSection)socialSection.classList.add("is-hidden-during-test");
  paused=false;started=true;startAt=clockNow();lastActivityAt=clockNow();input.disabled=false;
  $("hint").textContent="Keep going — accuracy first, speed follows. The test pauses after 10 seconds of inactivity.";
  $("startBtn").textContent="Test in progress";
@@ -1233,6 +1295,7 @@ function renderPerformanceChart(){
 function finish(manual=false){
   if(finished)return;
   exitFocusMode();
+  const socialSection=$("socialSection");if(socialSection)socialSection.classList.remove("is-hidden-during-test");
   // Capture the final timeline point before marking the session as stopped.
   if(started)recordSnapshot();
   const m=metrics();
@@ -1340,6 +1403,13 @@ document.querySelectorAll("[data-kind]").forEach(btn=>btn.addEventListener("clic
  reset();
 }));
 
+const practiceToggle=$("practiceDropdownToggle"),practiceMenu=$("practiceMenu");
+updatePracticeMenuSelection();
+practiceToggle.addEventListener("click",()=>{const open=practiceMenu.hidden;practiceMenu.hidden=!open;practiceToggle.setAttribute("aria-expanded",String(open));});
+document.querySelectorAll("[data-practice-row]").forEach(btn=>btn.addEventListener("click",()=>{practiceRow=btn.dataset.practiceRow;activatePractice();}));
+
+document.addEventListener("click",event=>{if(!$("practiceDropdown").contains(event.target))closePracticeMenu();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape")closePracticeMenu();});
 $("newPassageBtn").addEventListener("click",reset);
 $("themeToggle").addEventListener("click",()=>{
   const dark=document.body.classList.toggle("dark-theme");
