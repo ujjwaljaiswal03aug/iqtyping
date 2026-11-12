@@ -1564,6 +1564,17 @@ $("themeToggle").addEventListener("click",()=>{
   writeStorage("true-typing-theme",dark?"dark":"white");
  });
 document.addEventListener("keydown",e=>{
+  // Prevent Space from scrolling the page behind the results overlay.
+  // Keep native Space behavior for controls and content inside the result panel.
+  const resultPanel=$("result");
+  if(e.code==="Space" && resultPanel.classList.contains("show") &&
+     !resultPanel.contains(e.target) &&
+     !e.target.closest("button, a, input, textarea, select, [contenteditable=\"true\"]")){
+    e.preventDefault();
+  }
+},true);
+
+document.addEventListener("keydown",e=>{
   // Resume an inactivity-paused test with the same printable key that triggered it.
   if(paused&&!finished&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&
      (e.key===" "||(e.key.length===1&&/^[a-z]$/i.test(e.key)))){
