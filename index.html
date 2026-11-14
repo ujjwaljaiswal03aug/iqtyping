@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f5f7fa">
-<meta name="description" content="Take a free online typing test with IQTyping. Check your WPM, accuracy and errors, practise English typing, and build keyboard skills with educational passages.">
+<meta name="description" content="Free online typing test to improve WPM and accuracy. Practise with GK, GS, NCERT, Daily News and Current Affairs passages on IQTyping.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="IQTyping">
 <meta name="application-name" content="IQTyping">
@@ -61,7 +61,7 @@
       "@id": "https://iqtyping.com/#webpage",
       "url": "https://iqtyping.com/",
       "name": "Free Online Typing Test and Practice | IQTyping",
-      "description": "Take a free online typing test with IQTyping. Check your WPM, accuracy and errors, practise English typing, and build keyboard skills with educational passages.",
+      "description": "Free online typing test to improve WPM and accuracy. Practise with GK, GS, NCERT, Daily News and Current Affairs passages on IQTyping.",
       "isPartOf": {
         "@id": "https://iqtyping.com/#website"
       },
@@ -82,16 +82,16 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/iq-favicon.png">
 <link rel="apple-touch-icon" href="/iq-favicon.png">
 <meta name="google-site-verification" content="IEatH_HkrpVMTM_DJhoafs0OKPBtEPUZTfYQrJfplmE" />
-<title>Free Online Typing Test &amp; Practice | IQTyping</title>
+<title>Free Online Typing Test &amp; Practice with GK and News | IQTyping</title>
   
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://iqtyping.com/">
 <meta property="og:site_name" content="IQTyping">
-<meta property="og:title" content="Free Online Typing Test &amp; Practice | IQTyping">
-<meta property="og:description" content="Take free timed typing tests, check WPM and accuracy, practise keyboard rows, and learn with GK, GS, NCERT and current affairs passages on IQTyping.">
+<meta property="og:title" content="Free Online Typing Test &amp; Practice with GK and News | IQTyping">
+<meta property="og:description" content="Improve typing speed and accuracy with timed tests, keyboard-row practice, GK, GS, NCERT, Daily News and Current Affairs passages.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Online Typing Test &amp; Practice | IQTyping">
-<meta name="twitter:description" content="Practise typing, measure WPM and accuracy, and build keyboard skills with free educational typing exercises.">
+<meta name="twitter:title" content="Free Online Typing Test &amp; Practice with GK and News | IQTyping">
+<meta name="twitter:description" content="Practise typing, measure gross WPM and accuracy, and learn with free educational passages on IQTyping.">
 <meta property="og:image" content="https://iqtyping.com/iq-logo.png">
 <meta property="og:image:alt" content="IQTyping blue pen and brain logo">
 <meta property="og:image:type" content="image/png">
@@ -689,7 +689,7 @@ select:disabled{
   </section>
   <div class="modebar" role="group" aria-label="Typing test settings">
     <span class="mode-label">Time</span>
-    <button data-time="60" class="active">1 min</button><button data-time="120">2 min</button><button data-time="180">3 min</button><button data-time="300">5 min</button><button data-time="600">10 min</button>
+    <button type="button" data-time="60" class="active">1 min</button><button type="button" data-time="120">2 min</button><button type="button" data-time="180">3 min</button><button type="button" data-time="300">5 min</button><button type="button" data-time="600">10 min</button>
     <span class="divider"></span>
     <label class="mode-label" for="backspaceMode">Backspace Options</label>
     <select id="backspaceMode" class="backspace-select" aria-label="Backspace options">
@@ -708,7 +708,7 @@ select:disabled{
           <button type="button" data-practice-row="bottom">Bottom Row Practice</button>
           <button type="button" data-practice-row="all">All Rows Practice</button>
         </div>
-      </div><button data-kind="quotes" class="active">Motivational Quotes</button><button data-kind="gk">GK</button><button data-kind="gsncert">GS/NCERT</button><button data-kind="dailynews">Daily NEWS</button><button data-kind="currentaffairs">Current Affairs</button><button data-kind="exampractice">Exam Practice</button>
+      </div><button type="button" data-kind="quotes" class="active">Motivational Quotes</button><button type="button" data-kind="gk">GK</button><button type="button" data-kind="gsncert">GS/NCERT</button><button type="button" data-kind="dailynews">Daily NEWS</button><button type="button" data-kind="currentaffairs">Current Affairs</button><button type="button" data-kind="exampractice">Exam Practice</button>
       <button id="newPassageBtn" title="Load another passage">↻ New passage</button>
     </div>
   </div>
@@ -723,18 +723,18 @@ select:disabled{
       <div class="words" id="words"></div>
       <textarea id="typingInput" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Type the text shown above"></textarea>
     </div>
-    <div class="test-hint"><span id="hint">Click the text and start typing to begin.</span></div>
+    <div class="test-hint"><span id="hint" role="status" aria-live="polite">Click the text and start typing to begin.</span></div>
     <div class="actions"><button class="secondary" id="exitFocusBtn" type="button" aria-label="Exit distraction-free mode">Exit focus</button><button class="primary" id="startBtn">Start typing</button><button class="secondary" id="submitBtn" type="button">Submit</button><button class="secondary" id="restartBtn">↻ Restart test</button></div>
-    <div class="result" id="result">
+    <div class="result" id="result" role="dialog" aria-modal="true" aria-labelledby="resultTitle" tabindex="-1">
       <div class="result-top"><div><h2 id="resultTitle">Nice run.</h2><p id="resultSub">A little better every time.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="closeResultBtn" type="button">Close</button><button class="secondary" id="againBtn">Try again ↗</button></div></div>
       <blockquote class="result-quote">
         <p>Work so hard that your loved ones get scared of your routine, your friends question your obsession, and your results leave every skeptic speechless. You were not born to live a mediocre life. Be obsessed with your goals, ruthless with your discipline, and unstoppable in your pursuit.</p>
         <footer>— Ujjwal Jaiswal</footer>
       </blockquote>
       <div class="result-grid">
-        <div><div class="value" id="finalWpm">0</div><div class="label">words / min</div></div>
+        <div><div class="value" id="finalWpm">0</div><div class="label">gross WPM</div></div>
         <div><div class="value" id="finalAcc">100%</div><div class="label">accuracy</div></div>
-        <div><div class="value" id="finalRaw">0</div><div class="label">raw wpm</div></div>
+        <div><div class="value" id="finalRaw">0</div><div class="label">net WPM</div></div>
         <div><div class="value" id="finalErrors">0</div><div class="label">mistakes</div></div>
       </div>
       <div class="analytics-grid" aria-label="Detailed typing statistics">
@@ -744,7 +744,7 @@ select:disabled{
         <div class="analytics-stat"><strong id="finalFixes">0</strong><span>Backspace fixes</span></div>
       </div>
       <div class="analytics-chart">
-        <div class="analytics-chart-head"><span>Performance timeline</span><span class="chart-legend"><span class="legend-key"><span class="legend-dot legend-net" aria-hidden="true"></span>Net WPM</span><span class="legend-key"><span class="legend-dot legend-raw" aria-hidden="true"></span>Raw WPM</span></span></div>
+        <div class="analytics-chart-head"><span>Performance timeline</span><span class="chart-legend"><span class="legend-key"><span class="legend-dot legend-net" aria-hidden="true"></span>Net WPM</span><span class="legend-key"><span class="legend-dot legend-raw" aria-hidden="true"></span>Gross WPM</span></span></div>
         <svg id="performanceChart" viewBox="0 0 700 180" preserveAspectRatio="none" role="img" aria-label="Net and raw words per minute over time"></svg>
       </div>
     </div>
@@ -809,9 +809,9 @@ select:disabled{
 
     <section class="content-card" id="typing-performance-information" aria-labelledby="performance-heading">
       <h2 id="performance-heading">Measure Typing Speed, WPM and Accuracy</h2>
-      <p>Words per minute (WPM) is a standard way to describe typing speed. A common convention treats five characters, including spaces, as one standard word. IQTyping reports raw speed and an accuracy-adjusted result in its session summary.</p>
+      <p>Words per minute (WPM) is a standard way to describe typing speed. A common convention treats five characters, including spaces, as one standard word. IQTyping reports gross speed and an accuracy-adjusted net result in its session summary.</p>
       <h3>How WPM is calculated</h3>
-      <p>Raw WPM is calculated as the number of characters typed divided by five and then divided by elapsed time in minutes. The accuracy-adjusted WPM uses correctly typed characters in place of all typed characters. The displayed accuracy is the percentage of typed characters that match the passage.</p>
+      <p>Gross WPM = characters typed ÷ (5 × elapsed time in minutes). Net WPM uses correctly typed characters ÷ (5 × elapsed time in minutes). The displayed accuracy is the percentage of typed characters that match the passage.</p>
       <h3>Understand your results</h3>
       <p>Review WPM, accuracy, errors, consistency and your performance timeline after each completed test. Compare several sessions over time rather than judging progress from a single attempt.</p>
     </section>
@@ -1034,34 +1034,6 @@ if ("serviceWorker" in navigator && (location.protocol === "https:" || location.
 </script>
 <script>
 (() => {
-const wordBank = (`ace act add age ago aid aim air ale all and ant any ape app arc are ark arm art ash ask ate awe axe ado apt amp abs ads aft alt ana ann aah aba ada adz aga ahi ala alb alu ama ami amu ani anu apo arb ard arg arf ars asm asp ass att auk ava avo aye ays azo ake aks ams awn awl ail aha ahh ahs ais als aln agi ani ani aft aga ago air and any arc are arm art ash ask ate axe aim aid ale all ant ape app awe ace act add age ado apt amp ads abs ark ann ada ana ani auk aye avo ava arb asp awl awn aah ale ant art ask ash air add act age aid aim ace ape are and any ago awl ail awe axe ark arm ale all ape apt ace ado ads aft ale arc art ate aid air ant ape ash ask awl awn
-bat bag ban bar bed bee beg bet bid big bin bit bow box boy bus buy bye bad bay bib bio bit bob bog bun but bun bur bud bum brr bra bro bye bra ban bar bat bag bed bet beg bid big bin bit bib bob bog box boy bus bun but buy bay bad bow bee b bea brr bra bro bra bib bam bap bap bas bat ban bar bag bed beg bet ben bey bib bid big bin bit bis boa bob bod bog boo bop bot bow box boy bub bud bug bum bun bur bus but buy bye bcd bdf bps bts bhf bkg bld bld bns bny brr btl btm btu bpi bbl bbl bcp bdr bds bff bht bkg bks bld bps btl btu
-cab can cap car cat cob cod cog cop cot cow coy cry cub cue cup cut cad cam cap car cat cay cep chi cid cis cob cod cog col con coo cop cor cos cot cow cox coy coz cry cub cud cue cup cur cut cwm caw cey cha che chi cis col con cor cos coy cru cru cue cup cut cly cox cad cam cap car cat cob cod cog cop cot cow cub cud cue cup cut can cab cap cat car cod cob cow cup cut cry cub cue cop cot con can cot caw cox coy cep chi cod cog coo cos cur cwm cel cep cer cha che chi cia cid cis col cor coz cru cys cay cey cly cpy ctc cpr cpi cdr cfc cgi cpa csa csi cst cts ctv cwm
-dad dam day den dew did die dig dim dip dog dot dry dug due dub dye dab dam dan dap daw dee def del den dev dew dib die dif dig dim din dip dis dit doc doe dog doh dol dom don dor dos dot dow dry dub dud due dug dun duo dup dur dut dzo dab dad dam day den dew did die dig dim dip dog dot dry dug due dub dye din dip doc doe don dot dug dud dun duo dex deb dal dam dap daw dee del den dev dib die dif dig dim din dip dis dit doc doe dog doh dol dom don dor dos dot dow dry dub dud due dug dun duo dur dye
-ear eat egg ego elf elk elm end era eve eye ebb eel eft eke emu erg err eta eve eon eco edh eds eau eau eat ear egg eke elf elk elm end era eve eye ebb eel eft emu erg err eta eon eco ebb eel ear eat egg ego elf elk elm end era eve eye eat ear egg elf elk elm end era eve eye ebb eft eke emu erg err eta eon eco ens ent ehs eau eek een ean edh eds eff efs ehs eis eke els eme emo ens eon era err eta eve ewe eye ewt eww
-fab fad fag fan far fat fax fay fed fee fen few fez fib fie fig fin fir fit fix flu fly fob foe fog fon foo for fox fry fun fur fib fad fan far fat fax fed fee fen few fib fig fin fit fix flu fly fob foe fog for fox fry fun fur fab fag fan far fat fed fee fen few fib fig fin fir fit fix flu fly fob foe fog for fox fry fun fur fem fer fes feh fid fil fit flu fly fop fom fon fot fou fro fum fug fud fub fau faw fey
-gab gag gal gap gas gat gay gel gem get gig gin gip git gnu gob god goo got gum gun gut guy gym gab gag gal gap gas gel gem get gig gin gob god goo got gum gun gut guy gym gad gam gan gar ged gee gen gey ghi gib gid gif gig gil gin gip gis git gnu goa gob goe gon goo gor got guv gul gum gun gur gus gut gyp gad gam gap gas gel gem get gig gin god got gum gun gut guy gym gab gag gal gap gas gel gem get gig gin gob god goo got gum gun gut guy gym ged gee gen gey ghi gib gid gif gil gip gis git gnu goa goe gon gor guv gul gur gus gyp
-had hag ham has hat hay hem hen her hew hex hey hid him hip his hit hob hod hoe hog hop hot how hoy hub hue hug huh hum hut haw hep hep hem hen hes het hie him hin hip his hit hob hod hoe hog hop hot how hub hue hug hum hut hah hah ham had hag has hat hay hem hen her hex hid him hip his hit hoe hog hop hot how hug hum hut haw heh hon hos hup hye
-ice ich ick icy ids ifs ilk ill imp ink inn ins ion ire irk ism its ivy iso ire ice ill ink inn ion ire irk ivy imp ilk ism its ids ins ifs icy ich ick ism iso ita ire irk ilk ill inn ink ion imp ivy its inn ice ink ill ion imp ire ivy ilk irk ism its ids ins ifs icy ich ick iso ita ire ilk ill ink inn imp ion irk ivy its ids ins
-jab jag jam jar jaw jay jet jew jib jig jin job jog jot joy jug jut jut jag jam jar jaw jet jew jib jig jin job jog jot joy jug jut jab jag jam jar jaw jet jib jig jin job jog jot joy jug jut jow jun jus jup jor jap jee jud jod jem jes jit jid jiz jow jag jam jar jaw jet jib jig jin job jog jot joy jug jut jow jun jus jup jor jap jee jud jod jem jes jit jid jiz jow
-keg ken kep key kid kin kip kit koi kop kor kos kot koa kae kab kaf kas kat kay kea ked kef keg ken kep ket khi kid kin kip kir kit koa kob koi kop kor kos kot koa kae kab kaf kas kat kay kea ked kef keg ken kep ket khi kid kin kip kir kit koi kop kor kos kot kep keg ken key kid kin kit koi koa kay kab kaf kas kat ken keg kep key kid kin kip kit koi kop kor kos kot koa kay kae ked kef khi kob kir
-lab lac lad lag lap law lax lay lea led leg let leu lid lie lip lit lob log loo lop lot low lug lux lye lab lac lad lag lap law lax lay lea led leg let leu lid lie lip lit lob log loo lop lot low lug lux lye lib lin lis loo lop lot low lug lum luv lac lad lag lap law lay lea led leg let lid lie lip lit lob log lot low lug lax lye lib lin lis
-mad man map mat maw max may med meg mel men met mew mid mig mil mim mix mob mod mog mom mon moo mop mot mow mud mug mum mun mus mut myc mac mad man map mat maw max may med men met mew mid mil mix mob mod mom moo mop mow mud mug mum mun mus mut mac mag mal mam mar mas maw max med meg mel mem men met mew mho mic mid mig mil mim mir mis mix moa mob moc mod mog mol mom mon moo mop mor mos mot mow mud mug mum mun mus mut myc
-nab nag nah nam nan nap nay neb nee net new nib nil nip nit nix nob nod nog nor nos not now nth nub nun nus nut nae nae nag nah nam nap nay neb nee net new nib nil nip nit nix nob nod nog nor nos not now nub nun nut nan nip net nod nag nab nap nor nit nix now new nil nod not nun nut nee nab nag nap nay neb net new nib nip nit nob nod nor not now nub nun nut nae naw nee nor nos nix nag nam nan nay
-oaf oak oar oat obi obo obs och odd ode off oft ohm oil oka old ole one ono ons ooh oom ope opt ora orb orc ore ors ort oud our out ova owe owl own oxy oba oba oda oda off oft ohm oil oak oar oat old one ore orb ore our out owe owl own opt oaf oak oar oat obi odd ode off oil old one ore orb our out owe owl own ova oxy oka ole ono ooh ope ora ors ort oud oba obo obs och oom ons
-pad pal pan pap par pat paw pay pea peg pen pep per pet pew pie pig pin pip pit pix ply pod poh poi pol pom pop pot pow pro pry pub pud pug pun pup pus put pya pac pad pal pan pap par pat paw pay pea peg pen pep per pet pew pie pig pin pip pit pod pop pot pow pro pry pub pud pug pun pup pus put pac pah pak pam pas pax pec ped peh pel pem pes phi pho pia pir pis piu plu poh pol pom pon pos pre pry psi pya pht
-qat qis qua que qui quo qin qis qat qua que qui quo qin qis qat qua que qui quo qat qua que qui quo qin qat qua que qui quo qis qat qua que qui quo qin qis qat qua que qui quo qin qat qua que qui quo qat qis qua que qui quo qin qat qua que qui quo qin qis qat qua que qui quo qin qat qua que qui quo qin qat qua que qui quo
-rag ram ran rap rat raw ray reb rec red ref rem rep res ret rev rex rib rid rig rim rip rob roc rod roe rot row rub rue rug rum run rut rya rah rai raj raj rap ras rav raw ray reb rec red ref reg rem rep res ret rev rex rib rid rig rim rip rob roc rod roe rot row rub rue rug rum run rut ryu rho ria rif rin ris rok rom ros rya
-sad sag sap sat saw sax say sea sec see sen set sew sex she shy sib sic sim sin sip sir sis sit six ska ski sky sly sob sod sol son sop sot sow soy spa spy sty sub sue sum sun sup sus syn sal san sap sar sau saw sax say sea see sel sen ser set sew she shy sib sic sim sin sip sir sit six ska ski sky sly sob sod sol son sop sot sow soy spa spy sty sub sue sum sun sup
-tab tad tag tan tap tar tat tax tea ted tee ten the tho thy tic tie tin tip tis tit toe tog tom ton too top tor tot tow toy try tub tug tui tun tup tut twa two tae taj tam tao tas tau taw teg tel tem tes tet tew tho tik til tod tod tog tom ton tor tot tow toy try tub tug tui tun tup tut twa two
-ugh uke ulu ump uni uns upo ups urb urd urn use uta uts udo ugh uke ulu ump uni uns ups urb urd urn use uta uts udo ugh uke ulu ump uni uns ups urb urd urn use uta uts udo ulu urn use ups uni ugh uke ump urb urd uta uts udo
-van vat vau vav vaw vee vet vex via vid vie vig vim vis voe vog von vow vox vug van vat vau vav vaw vee vet vex via vid vie vig vim vis voe vog von vow vox vug van vat vee vet vex via vie vim vis vow vox vug vid vig vog von vau vav vaw voe
-wad wag wan wap war was wat wax way web wed wee wen wet wha who why wig win wis wit wiz woe wok won woo wow wry wud wye wab wae wan wap war was wax way web wed wee wen wet wha who why wig win wis wit woe wok won woo wow wry wud wye wad wag wap wat wax web wed wee wet who why win wit woe wok won wow wry
-xis xed xem xen xer xii xis xed xem xen xer xii xis xed xem xen xer xii xat xeb xel xes xip xon xum xus xyr xix xee xai xao xou xad xag xak xam xap xar xas xat xaw xay xed xeg xel xem xen xep xer xes xet xew xey xib xic xid xie xif xig xih xii xij xik xil xim xin xio xip xir xis xit xiv xiz xob xoc xod xoe xog xoi xok xol xom xon xoo xop xor xos xot xow xox xoy xub xuc xud xue xug xum xun xup xur xus xut xuy
-yak yam yap yar yaw yay yea yen yep yes yet yew yin yip yob yod yok yon you yow yob yod yok yon you yow yak yam yap yar yaw yay yea yen yep yes yet yew yin yip yex yid yip yis yod yog yot yow yus yut yue yai yau yeh yel yem yen yer yes yew yex yid yin yip yis yob yod yog yok yon you yow yus yut
-zag zap zas zax zed zee zek zep zig zin zip zit zoa zob zod zoe zoo zag zap zas zax zed zee zek zep zig zin zip zit zoa zob zod zoe zoo zar zax zeb zel zen zep zes zho zib zil zim zin zip zit zoa zob zod zoe zol zon zoo zub zag zap zed zee zig zip zit zoo
-
-`).replace(/[.,;]/g,"").split(/\s+/);
 const gkBank = [
 "the largest planet in our solar system is jupiter",
 "the pacific ocean is the largest ocean on earth",
@@ -1518,7 +1490,18 @@ function readStorage(key,fallback){try{const value=localStorage.getItem(key);ret
 function readJSONStorage(key,fallback){try{const value=localStorage.getItem(key);return value===null?fallback:JSON.parse(value)}catch(e){return fallback}}
 function writeStorage(key,value){try{localStorage.setItem(key,typeof value==="string"?value:JSON.stringify(value));return true}catch(e){return false}}
 let savedHistory=readJSONStorage("keystreak-history",[]);
-let history=Array.isArray(savedHistory)?savedHistory.filter(item=>item&&Number.isFinite(Number(item.wpm))&&Number.isFinite(Number(item.acc))):[];
+let history=Array.isArray(savedHistory)?savedHistory
+ .filter(item=>item&&Number.isFinite(Number(item.wpm))&&Number.isFinite(Number(item.acc)))
+ .map(item=>{
+   const acc=Math.max(0,Math.min(100,Number(item.acc)));
+   const storedWpm=Math.max(0,Math.min(1000,Number(item.wpm)));
+   // Older versions stored accuracy-adjusted WPM as the primary score.
+   // Estimate their gross WPM during migration; new records store both values.
+   const wpm=item.metricVersion===2?storedWpm:(acc>0?Math.round(storedWpm/(acc/100)):storedWpm);
+   const netWpm=Number.isFinite(Number(item.netWpm))?Math.max(0,Math.min(1000,Number(item.netWpm))):storedWpm;
+   return {wpm,netWpm,acc,date:Number.isFinite(Number(item.date))&&Number(item.date)>0?Number(item.date):0,metricVersion:2};
+ })
+ .slice(0,5):[];
 let timelineData=[], keystrokes=0, fixes=0, lastSnapshotSecond=-1;
 let bestValue=Number(readStorage("keystreak-best","0")), runsValue=Number(readStorage("keystreak-runs","0"));
 let best=Number.isFinite(bestValue)&&bestValue>=0?bestValue:0, runs=Number.isFinite(runsValue)&&runsValue>=0?runsValue:0;
@@ -1610,13 +1593,14 @@ function reset(){
 function metrics(){
  const elapsed=elapsedBeforePause+(started&&startAt?Math.max((clockNow()-startAt)/1000,0):0);
  const correct=typed.split("").reduce((n,c,i)=>n+(c===text[i]?1:0),0);
- const errors=typed.length-correct, mins=Math.max(elapsed/60,1/60);
- // Gross WPM = characters typed / (5 × elapsed time in minutes).
- const raw=Math.round(typed.length/(5*mins));
- // Preserve the existing accuracy-adjusted net WPM calculation.
- const wpm=Math.round((correct/5)/mins);
+ const errors=typed.length-correct;
+ const minutes=Math.max(elapsed/60,1/60);
+ // Gross WPM follows IQTyping's standard: characters typed / (5 × minutes).
+ const grossWpm=Math.round(typed.length/(5*minutes));
+ // Net WPM discounts incorrect characters; retain it as a separate metric.
+ const netWpm=Math.round(correct/(5*minutes));
  const acc=typed.length?Math.round(correct/typed.length*100):100;
- return {elapsed,correct,errors,raw,wpm,acc};
+ return {elapsed,correct,errors,wpm:grossWpm,grossWpm,netWpm,acc};
 }
 function updateStats(){
  const m=metrics(), remain=Math.max(0,Math.ceil(duration-m.elapsed));
@@ -1659,8 +1643,8 @@ function recordSnapshot(){
   const elapsed=Math.max(1,Math.floor(metrics().elapsed));
   if(elapsed===lastSnapshotSecond)return;
   lastSnapshotSecond=elapsed;
-  const m=metrics(), mins=Math.max(elapsed/60,1/60);
-  timelineData.push({time:elapsed,wpm:Math.max(0,Math.round((m.correct/5)/mins)),raw:Math.max(0,Math.round(typed.length/(5*mins)))});
+  const m=metrics();
+  timelineData.push({time:elapsed,wpm:Math.max(0,Math.round(m.netWpm)),raw:Math.max(0,Math.round(m.grossWpm))});
 }
 function renderPerformanceChart(){
   const svg=$("performanceChart"); if(!svg)return;
@@ -1683,12 +1667,12 @@ function finish(manual=false){
   $("timeStat").innerHTML=(manual?remaining:0)+'<span class="unit">sec</span>';
   $("resultTitle").textContent=m.wpm>=60?"Excellent rhythm.":m.wpm>=35?"Nice run.":"Good start.";
   $("resultSub").textContent=manual?`Session submitted after ${Math.round(m.elapsed)} seconds. You can review your progress below.`:`You typed for ${Math.min(duration,Math.round(m.elapsed))} seconds. Consistency is the real win.`;
-  $("finalWpm").textContent=m.wpm;$("finalAcc").textContent=m.acc+"%";$("finalRaw").textContent=m.raw;$("finalErrors").textContent=m.errors;
+  $("finalWpm").textContent=m.grossWpm;$("finalAcc").textContent=m.acc+"%";$("finalRaw").textContent=m.netWpm;$("finalErrors").textContent=m.errors;
   $("finalConsistency").textContent=consistencyScore()+"%";$("finalKeystrokes").textContent=keystrokes;$("finalCorrect").textContent=m.correct;$("finalFixes").textContent=fixes;renderPerformanceChart();
-  $("result").classList.add("show");document.body.classList.add("result-open");
+  $("result").classList.add("show");document.body.classList.add("result-open");$("closeResultBtn").focus({preventScroll:true});
   $("hint").textContent=manual?"Results submitted. Ready for another?":"Run complete. Ready for another?";
   $("startBtn").textContent=manual?"Session submitted":"Run complete";
-  runs++;best=Math.max(best,m.wpm);history.unshift({wpm:m.wpm,acc:m.acc,date:Date.now()});history=history.slice(0,5);
+  runs++;best=Math.max(best,m.wpm);history.unshift({wpm:m.grossWpm,netWpm:m.netWpm,acc:m.acc,date:Date.now(),metricVersion:2});history=history.slice(0,5);
   writeStorage("keystreak-history",history);writeStorage("keystreak-best",String(best));writeStorage("keystreak-runs",String(runs));updateDashboard();
 }
 function updateDashboard(){
@@ -1772,7 +1756,7 @@ $("startBtn").addEventListener("click",()=>{if(finished)reset();if(!started&&!fi
 $("restartBtn").addEventListener("click",reset);$("againBtn").addEventListener("click",()=>{reset();});
  $("exitFocusBtn").addEventListener("click",exitFocusMode);
 $("submitBtn").addEventListener("click",()=>{if(!finished)finish(true)});
-$("closeResultBtn").addEventListener("click",()=>{$("result").classList.remove("show");document.body.classList.remove("result-open")});
+$("closeResultBtn").addEventListener("click",()=>{$("result").classList.remove("show");document.body.classList.remove("result-open");input.focus({preventScroll:true})});
 document.querySelectorAll("[data-time]").forEach(btn=>btn.addEventListener("click",()=>{duration=Number(btn.dataset.time);document.querySelectorAll("[data-time]").forEach(b=>b.classList.toggle("active",b===btn));reset()}));
 document.querySelectorAll("[data-kind]").forEach(btn=>btn.addEventListener("click",()=>{
  const nextKind=btn.dataset.kind;
@@ -1851,7 +1835,19 @@ $("clearHistoryBtn").addEventListener("click",()=>{
 });
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"&&document.body.classList.contains("distraction-free")&&!$("result").classList.contains("show")){exitFocusMode();return;}
- if(e.key==="Escape"&&$("result").classList.contains("show")){$("result").classList.remove("show");document.body.classList.remove("result-open")}
+ if(e.key==="Escape"&&$("result").classList.contains("show")){
+  $("result").classList.remove("show");
+  document.body.classList.remove("result-open");
+  input.focus({preventScroll:true});
+  return;
+ }
+ if(e.key!=="Tab"||!$("result").classList.contains("show"))return;
+ const focusable=[...$("result").querySelectorAll('button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+  .filter(element=>element.getClientRects().length>0);
+ const first=focusable[0],last=focusable[focusable.length-1];
+ if(!first)return;
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
 });
 document.addEventListener("click",e=>{
  if(document.body.classList.contains("result-open")&&e.target===document.body){$("result").classList.remove("show");document.body.classList.remove("result-open")}
@@ -1896,7 +1892,19 @@ document.addEventListener("click",e=>{
 $("closeInfoModal").addEventListener("click",closeInfoPopup);
 infoModal.addEventListener("click",e=>{if(e.target===infoModal)closeInfoPopup()});
 document.addEventListener("keydown",e=>{
- if(e.key==="Escape"&&infoModal.classList.contains("show"))closeInfoPopup();
+ if(!infoModal.classList.contains("show"))return;
+ if(e.key==="Escape"){
+  e.preventDefault();
+  closeInfoPopup();
+  return;
+ }
+ if(e.key!=="Tab")return;
+ const focusable=[...infoModal.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')]
+  .filter(element=>element.getClientRects().length>0);
+ const first=focusable[0],last=focusable[focusable.length-1];
+ if(!first)return;
+ if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+ else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
 });
 
 /*
@@ -1927,44 +1935,6 @@ window.addEventListener("focus", () => {
 });
 
 updateDashboard();reset();
-})();
-</script>
-
-<script>
-/*
- * IQTyping: discourage casual source inspection.
- * This is a browser-side deterrent only; it cannot secure client-side code.
- * Normal typing, form editing, Tab navigation, and application shortcuts remain available.
- */
-(() => {
-  "use strict";
-
-  // Suppress the standard page context menu.
-  document.addEventListener("contextmenu", event => {
-    event.preventDefault();
-  }, true);
-
-  // Intercept common DevTools and View Source shortcuts without changing
-  // the typing application's own keyboard/input event handlers.
-  document.addEventListener("keydown", event => {
-    const key = String(event.key || "").toLowerCase();
-    const ctrlOrMeta = event.ctrlKey || event.metaKey;
-
-    const blockedShortcut =
-      key === "f12" ||
-      (ctrlOrMeta && event.shiftKey && ["i", "j", "c"].includes(key)) ||
-      (ctrlOrMeta && !event.shiftKey && key === "u") ||
-      // Common macOS DevTools shortcut.
-      (event.metaKey && event.altKey && key === "i");
-
-    if (blockedShortcut) {
-      event.preventDefault();
-      event.stopPropagation();
-      if (typeof event.stopImmediatePropagation === "function") {
-        event.stopImmediatePropagation();
-      }
-    }
-  }, true);
 })();
 </script>
 
