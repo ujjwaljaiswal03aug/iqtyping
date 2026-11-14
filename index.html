@@ -128,6 +128,9 @@ body.dark-theme .backspace-select{background-color:transparent}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:23px}.stat{padding:13px 15px;border-radius:10px;background:var(--panel2)}.stat .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}.stat .value{font-family:var(--mono);font-size:25px;letter-spacing:-.06em}.stat .unit{font-family:inherit;font-size:11px;color:var(--muted);letter-spacing:0;margin-left:4px}
 .typing-area{position:relative;border:1px solid var(--line);background:#14171d;border-radius:12px;min-height:188px;padding:24px 24px 20px;overflow:hidden;cursor:text}.typing-area:focus-within{border-color:#615638}.words{font:clamp(26px,2.35vw,30px)/1.7 var(--mono);letter-spacing:0;word-break:normal;overflow-wrap:anywhere;user-select:none;max-height:190px;overflow:hidden}.char{color:#596171;position:relative}.char.correct{color:var(--text)}.char.incorrect{color:var(--bad);background:#4c272c;border-radius:2px}.char.current:before{content:"";position:absolute;left:-1px;top:3px;bottom:3px;width:2px;background:var(--accent);border-radius:2px;animation:blink 1s steps(2,start) infinite}.char.current.space:before{left:0}@keyframes blink{to{opacity:0}}
 #typingInput{position:absolute;inset:0;width:100%;height:100%;opacity:.01;resize:none;border:0;outline:0;color:transparent;background:transparent;caret-color:transparent;cursor:text}
+.typing-area:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent),0 8px 28px rgba(33,150,243,.07);transition:border-color .18s ease,box-shadow .18s ease}
+.typing-area:focus-within .char.current:before{width:2.5px;box-shadow:0 0 9px color-mix(in srgb,var(--accent) 55%,transparent)}
+
 .test-hint{display:flex;justify-content:space-between;gap:12px;margin-top:15px;color:var(--muted);font-size:11px}.keycap{font-family:var(--mono);border:1px solid #363c48;background:#20242d;border-radius:5px;padding:3px 6px;color:#a5acba;font-size:10px}
 .actions{display:flex;align-items:center;justify-content:center;gap:10px;margin:19px 0 0}.primary{border:0;border-radius:9px;background:var(--accent);color:#191710;padding:12px 18px;font-size:12px;font-weight:800}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:11px 15px;font-size:12px}.secondary:hover{color:var(--text);border-color:#505767}
 .result{display:none;margin-top:16px;padding:22px;border:1px solid #5b5034;background:#211f1a;border-radius:13px}.result.show{display:block}.result-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.result h2{font-size:23px;letter-spacing:-.04em;margin:0 0 5px}.result p{color:var(--muted);font-size:12px;margin:0}
@@ -444,6 +447,235 @@ body.dark-theme .practice-menu{background:var(--panel);border-color:var(--line)}
 @media(max-width:650px){.seo-content{padding-bottom:24px}.seo-content .content-card{padding:17px}}
 
 </style>
+
+<style id="iqtyping-interaction-polish">
+/* IQTyping interaction polish — visual-only enhancements; no application logic changes. */
+:root{
+  --iq-hover-ease:cubic-bezier(.2,.75,.25,1);
+  --iq-hover-shadow:0 10px 28px rgba(22,42,65,.10);
+  --iq-focus-ring:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+
+/* Consistent, quick feedback for all interactive controls. */
+button,
+select,
+.site-nav a,
+.footer-links a,
+.seo-link-list a,
+.social-link,
+.practice-menu button,
+summary{
+  -webkit-tap-highlight-color:transparent;
+  transition:
+    color .2s var(--iq-hover-ease),
+    background-color .2s var(--iq-hover-ease),
+    border-color .2s var(--iq-hover-ease),
+    box-shadow .22s var(--iq-hover-ease),
+    transform .22s var(--iq-hover-ease),
+    opacity .2s var(--iq-hover-ease);
+}
+button{
+  position:relative;
+  isolation:isolate;
+}
+button:active{
+  transform:translateY(1px) scale(.985);
+}
+button:focus-visible,
+select:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+.typing-area:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  box-shadow:var(--iq-focus-ring);
+}
+
+/* Button families: lift, crisp border and a restrained accent glow. */
+@media (hover:hover) and (pointer:fine){
+  button:not(:disabled):hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 18px rgba(20,35,55,.11);
+  }
+  button:not(:disabled):active{
+    transform:translateY(0) scale(.985);
+    box-shadow:none;
+  }
+  .primary:not(:disabled):hover{
+    filter:brightness(1.045);
+    box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 27%,transparent);
+  }
+  .secondary:not(:disabled):hover,
+  .pill:not(:disabled):hover{
+    border-color:var(--accent);
+    color:var(--text);
+    box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 12%,transparent);
+  }
+  .modebar button:not(:disabled):hover,
+  .practice-dropdown>#practiceDropdownToggle:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+    background:color-mix(in srgb,var(--accent) 7%,var(--panel));
+  }
+  .modebar button.active:hover{
+    color:var(--accent);
+  }
+  #newPassageBtn:hover{
+    transform:translateY(-2px) rotate(-1deg);
+  }
+}
+
+/* Navigation links get a small animated underline. */
+.site-nav a,
+.footer-links a{
+  position:relative;
+  text-decoration:none;
+}
+.site-nav a::after,
+.footer-links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-5px;
+  height:1.5px;
+  background:var(--accent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .22s var(--iq-hover-ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .site-nav a:hover::after,
+  .footer-links a:hover::after{transform:scaleX(1)}
+  .site-nav a:hover,
+  .footer-links a:hover{color:var(--accent)}
+}
+
+/* Panels and information surfaces respond gently without changing their geometry. */
+.test-card,
+.stat,
+.mini-card,
+.content-card,
+.analytics-chart,
+.analytics-stat,
+.social-section,
+.result-quote,
+.info-dialog{
+  transition:
+    border-color .24s var(--iq-hover-ease),
+    box-shadow .24s var(--iq-hover-ease),
+    background-color .24s var(--iq-hover-ease),
+    transform .24s var(--iq-hover-ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .test-card:hover{
+    border-color:color-mix(in srgb,var(--accent) 32%,var(--line));
+    box-shadow:0 16px 42px rgba(25,45,70,.09);
+  }
+  .stat:hover,
+  .analytics-stat:hover{
+    transform:translateY(-2px);
+    border-color:color-mix(in srgb,var(--accent) 38%,var(--line));
+    box-shadow:var(--iq-hover-shadow);
+  }
+  .mini-card:hover,
+  .content-card:hover,
+  .analytics-chart:hover{
+    border-color:color-mix(in srgb,var(--accent) 42%,var(--line));
+    box-shadow:var(--iq-hover-shadow);
+  }
+  .social-section:hover{
+    border-color:color-mix(in srgb,var(--accent) 35%,var(--line));
+  }
+  .result-quote:hover{
+    border-left-color:var(--accent);
+    box-shadow:0 7px 20px rgba(20,35,55,.08);
+  }
+}
+
+/* Typing area: a clear, calm focus state rather than a distracting animation. */
+.typing-area{
+  transition:border-color .22s var(--iq-hover-ease),box-shadow .22s var(--iq-hover-ease),background-color .22s var(--iq-hover-ease);
+}
+.typing-area:focus-within{
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 10%,transparent),0 10px 28px rgba(20,35,55,.06);
+}
+
+/* Dropdown items, social destinations and in-page resource links. */
+.practice-menu{
+  transform-origin:top left;
+  animation:iqMenuIn .18s var(--iq-hover-ease) both;
+}
+.practice-menu[hidden]{animation:none}
+@keyframes iqMenuIn{
+  from{opacity:0;transform:translateY(-5px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media (hover:hover) and (pointer:fine){
+  .practice-menu button:hover,
+  .practice-menu button.selected{
+    transform:translateX(3px);
+    box-shadow:inset 2px 0 0 var(--accent);
+  }
+  .seo-link-list a:hover{
+    transform:translateY(-2px);
+    background:color-mix(in srgb,var(--accent) 7%,var(--panel));
+    box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 10%,transparent);
+  }
+  .social-link:hover{
+    transform:translateY(-3px);
+    border-color:var(--accent);
+    box-shadow:0 10px 24px rgba(20,35,55,.12);
+  }
+  .social-link:hover .social-arrow{
+    transform:translate(2px,-2px);
+    color:var(--accent);
+  }
+}
+.social-arrow{display:inline-block;transition:transform .2s var(--iq-hover-ease),color .2s var(--iq-hover-ease)}
+
+/* FAQ and modal controls. */
+summary{border-radius:6px}
+@media (hover:hover) and (pointer:fine){
+  .seo-faq summary:hover{color:var(--accent);padding-left:4px}
+  .info-modal-head button:hover{transform:rotate(-2deg) translateY(-1px)}
+}
+.info-modal.show .info-dialog{
+  animation:iqDialogIn .22s var(--iq-hover-ease) both;
+}
+@keyframes iqDialogIn{
+  from{opacity:0;transform:translateY(8px) scale(.99)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* Disabled controls should never look interactive. */
+button:disabled,
+select:disabled{
+  cursor:not-allowed;
+  opacity:.48;
+  transform:none!important;
+  box-shadow:none!important;
+}
+
+/* Keep motion comfortable and avoid hover-only movement on touch devices. */
+@media (hover:none), (pointer:coarse){
+  button:active,
+  .social-link:active,
+  .seo-link-list a:active{opacity:.82}
+}
+@media(prefers-reduced-motion:reduce){
+  button,select,.site-nav a,.footer-links a,.seo-link-list a,.social-link,
+  .practice-menu,.practice-menu button,summary,.test-card,.stat,.mini-card,
+  .content-card,.analytics-chart,.analytics-stat,.social-section,.result-quote,
+  .info-dialog,.typing-area,.social-arrow{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+  button:active,.social-link:active,.seo-link-list a:active{transform:none}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -1666,6 +1898,34 @@ infoModal.addEventListener("click",e=>{if(e.target===infoModal)closeInfoPopup()}
 document.addEventListener("keydown",e=>{
  if(e.key==="Escape"&&infoModal.classList.contains("show"))closeInfoPopup();
 });
+
+/*
+ * Keep the typing field ready after pointer-based UI interactions.
+ * Do not steal focus from native selects, links, modal/result dialogs,
+ * or keyboard-driven navigation.
+ */
+function keepTypingReady(){
+  if(finished || input.disabled) return;
+  if(infoModal && infoModal.classList.contains("show")) return;
+  if($("result").classList.contains("show")) return;
+  if(!$("practiceMenu").hidden) return;
+  input.focus({preventScroll:true});
+}
+document.addEventListener("click", event => {
+  // detail === 0 covers keyboard/screen-reader activation; preserve that focus.
+  if(event.detail === 0) return;
+  const target = event.target instanceof Element ? event.target : null;
+  if(!target || target.closest("select, a, input, textarea, [contenteditable='true']")) return;
+  // Let the clicked control finish its own action before restoring typing focus.
+  window.setTimeout(keepTypingReady, 0);
+});
+window.addEventListener("focus", () => {
+  if(!finished && !paused && !infoModal?.classList.contains("show") &&
+     !$("result").classList.contains("show") && $("practiceMenu").hidden){
+    input.focus({preventScroll:true});
+  }
+});
+
 updateDashboard();reset();
 })();
 </script>
