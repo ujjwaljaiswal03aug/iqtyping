@@ -133,6 +133,20 @@ body.dark-theme .backspace-select{background-color:transparent}
 
 .test-hint{display:flex;justify-content:space-between;gap:12px;margin-top:15px;color:var(--muted);font-size:11px}.keycap{font-family:var(--mono);border:1px solid #363c48;background:#20242d;border-radius:5px;padding:3px 6px;color:#a5acba;font-size:10px}
 .actions{display:flex;align-items:center;justify-content:center;gap:10px;margin:19px 0 0}.primary{border:0;border-radius:9px;background:var(--accent);color:#191710;padding:12px 18px;font-size:12px;font-weight:800}.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}.secondary{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:11px 15px;font-size:12px}.secondary:hover{color:var(--text);border-color:#505767}
+/* Emphasize the recommended restart action after a completed test. */
+#againBtn.result-primary-action{
+  border-color:var(--accent);background:var(--accent);color:#17212b;
+  font-weight:800;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent),0 8px 22px color-mix(in srgb,var(--accent) 24%,transparent);
+  animation:tryAgainPulse 1.8s ease-in-out infinite;
+}
+#againBtn.result-primary-action:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@keyframes tryAgainPulse{
+  0%,100%{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent),0 7px 18px color-mix(in srgb,var(--accent) 18%,transparent)}
+  50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 10%,transparent),0 9px 25px color-mix(in srgb,var(--accent) 30%,transparent)}
+}
+@media(prefers-reduced-motion:reduce){#againBtn.result-primary-action{animation:none}}
+
 .result{display:none;margin-top:16px;padding:22px;border:1px solid #5b5034;background:#211f1a;border-radius:13px}.result.show{display:block}.result-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.result h2{font-size:23px;letter-spacing:-.04em;margin:0 0 5px}.result p{color:var(--muted);font-size:12px;margin:0}
 .result-quote{margin:16px 0 0;padding:13px 16px;border-left:3px solid var(--accent);border-radius:0 9px 9px 0;background:var(--panel2)}
 .result-quote p{color:var(--text);font-size:13px;line-height:1.65;margin:0}
@@ -1587,7 +1601,7 @@ function reset(){
  clearInterval(interval);started=false;finished=false;paused=false;startAt=0;elapsedBeforePause=0;lastActivityAt=0;typed="";keystrokes=0;fixes=0;timelineData=[];lastSnapshotSecond=-1;text=makeText();input.value="";input.disabled=false;
  $("result").classList.remove("show");document.body.classList.remove("result-open");$("timeStat").innerHTML=duration+'<span class="unit">sec</span>';
  $("wpmStat").innerHTML='0<span class="unit">wpm</span>';$("accuracyStat").innerHTML='100<span class="unit">%</span>';$("errorsStat").textContent='0';
- $("hint").textContent="Select Start typing when you are ready. The timer begins immediately.";$("startBtn").textContent="Start typing";
+ $("hint").textContent="New paragraph loaded. Start typing to begin the timer.";$("startBtn").textContent="Start typing";$("againBtn").classList.remove("result-primary-action");
  renderText();wordsEl.scrollTop=0;input.focus({preventScroll:true});
 }
 function metrics(){
@@ -1669,7 +1683,7 @@ function finish(manual=false){
   $("resultSub").textContent=manual?`Session submitted after ${Math.round(m.elapsed)} seconds. You can review your progress below.`:`You typed for ${Math.min(duration,Math.round(m.elapsed))} seconds. Consistency is the real win.`;
   $("finalWpm").textContent=m.grossWpm;$("finalAcc").textContent=m.acc+"%";$("finalRaw").textContent=m.netWpm;$("finalErrors").textContent=m.errors;
   $("finalConsistency").textContent=consistencyScore()+"%";$("finalKeystrokes").textContent=keystrokes;$("finalCorrect").textContent=m.correct;$("finalFixes").textContent=fixes;renderPerformanceChart();
-  $("result").classList.add("show");document.body.classList.add("result-open");$("closeResultBtn").focus({preventScroll:true});
+  $("againBtn").classList.add("result-primary-action");$("result").classList.add("show");document.body.classList.add("result-open");$("againBtn").focus({preventScroll:true});
   $("hint").textContent=manual?"Results submitted. Ready for another?":"Run complete. Ready for another?";
   $("startBtn").textContent=manual?"Session submitted":"Run complete";
   runs++;best=Math.max(best,m.wpm);history.unshift({wpm:m.grossWpm,netWpm:m.netWpm,acc:m.acc,date:Date.now(),metricVersion:2});history=history.slice(0,5);
@@ -1752,7 +1766,11 @@ input.addEventListener("input",()=>{
  if(typed.length>=text.length)finish();
 });
 area.addEventListener("click",()=>input.focus());
-$("startBtn").addEventListener("click",()=>{if(finished)reset();if(!started&&!finished)begin();input.focus()});
+$("startBtn").addEventListener("click",()=>{
+  if(finished)reset();
+  // The first typed character starts the timer; this button only focuses the field.
+  input.focus();
+});
 $("restartBtn").addEventListener("click",reset);$("againBtn").addEventListener("click",()=>{reset();});
  $("exitFocusBtn").addEventListener("click",exitFocusMode);
 $("submitBtn").addEventListener("click",()=>{if(!finished)finish(true)});
@@ -1803,13 +1821,16 @@ document.addEventListener("keydown",e=>{
     return;
   }
 
-  // Enter on the results screen is equivalent to clicking Try Again,
-  // including after a manually submitted, incomplete test.
+  // Enter on the completed-results screen loads a fresh paragraph.
+  // reset() leaves the timer idle; the first typed character starts it.
   if(e.key==="Enter"){
    if(finished&&$("result").classList.contains("show")){
     e.preventDefault();
     reset();
+    $("hint").textContent="New paragraph loaded. Start typing to begin the timer.";
+    input.focus({preventScroll:true});
    }else if(e.target===input){
+    // Enter is a paragraph/restart control, never a typed character.
     e.preventDefault();
    }
   }
