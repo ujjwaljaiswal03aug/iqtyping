@@ -726,7 +726,7 @@ select:disabled{
     <div class="test-hint"><span id="hint">Click the text and start typing to begin.</span></div>
     <div class="actions"><button class="secondary" id="exitFocusBtn" type="button" aria-label="Exit distraction-free mode">Exit focus</button><button class="primary" id="startBtn">Start typing</button><button class="secondary" id="submitBtn" type="button">Submit</button><button class="secondary" id="restartBtn">↻ Restart test</button></div>
     <div class="result" id="result">
-      <div class="result-top"><div><h2 id="resultTitle">Nice run.</h2><p id="resultSub">A little better every time.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="closeResultBtn" type="button">Close</button><button class="secondary" id="againBtn">Try again ↗</button></div></div>
+      <div class="result-top"><div><h2 id="resultTitle">Nice run.</h2><p id="resultSub">A little better every time.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" id="againBtn">Try again ↗</button></div></div>
       <blockquote class="result-quote">
         <p>Work so hard that your loved ones get scared of your routine, your friends question your obsession, and your results leave every skeptic speechless. You were not born to live a mediocre life. Be obsessed with your goals, ruthless with your discipline, and unstoppable in your pursuit.</p>
         <footer>— Ujjwal Jaiswal</footer>
@@ -1772,7 +1772,6 @@ $("startBtn").addEventListener("click",()=>{if(finished)reset();if(!started&&!fi
 $("restartBtn").addEventListener("click",reset);$("againBtn").addEventListener("click",()=>{reset();});
  $("exitFocusBtn").addEventListener("click",exitFocusMode);
 $("submitBtn").addEventListener("click",()=>{if(!finished)finish(true)});
-$("closeResultBtn").addEventListener("click",()=>{$("result").classList.remove("show");document.body.classList.remove("result-open")});
 document.querySelectorAll("[data-time]").forEach(btn=>btn.addEventListener("click",()=>{duration=Number(btn.dataset.time);document.querySelectorAll("[data-time]").forEach(b=>b.classList.toggle("active",b===btn));reset()}));
 document.querySelectorAll("[data-kind]").forEach(btn=>btn.addEventListener("click",()=>{
  const nextKind=btn.dataset.kind;
